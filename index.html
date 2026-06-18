@@ -12,6 +12,13 @@
             padding: 10px 15px 30px 15px;
             margin: 0;
         }
+        .bsd {
+            text-align: right;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+            padding-right: 10px;
+        }
         .container {
             background-color: white;
             padding: 30px;
@@ -149,8 +156,10 @@
 </head>
 <body>
 
+<div class="bsd">בס"ד</div>
+
 <div class="container">
-    <h1>טופס מהיר לשליחת פנייה</h1>
+    <h1>טופס מהיר לשליחת פנייה למשרד התחבורה</h1>
     <p class="subtitle">דורשים תחבורה ציבורית באילפא ורב ייבא סבא!</p>
     
     <p>שכנים יקרים, אנא מלאו את פרטיכם כדי שהתלונה תהיה רשמית ותחייב מענה. המערכת תכין עבורכם נוסח מוכן ואקראי.</p>
@@ -186,7 +195,6 @@
     <button class="btn" onclick="processEmail('open')">לחצו כאן לפתיחת המייל ושליחה אוטומטית</button>
     <button class="btn btn-secondary" onclick="processEmail('copy')">רק אם הכפתור הירוק לא עבד: לחצו כאן להעתקת הטקסט</button>
 
-    <!-- קופסת ההעתקה הידנית (מוסתרת כברירת מחדל) -->
     <div id="manualCopySection" class="manual-copy-box">
         <h3>הוראות להשלמת השליחה הידנית</h3>
         <p>✅ <strong>גוף ההודעה הועתק בהצלחה!</strong> פתחו את המייל שלכם והדביקו אותו בתוך ההודעה החדשה.</p>
