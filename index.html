@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פנייה למשרד התחבורה - אילפא ורב ייבא סבא</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            padding: 10px 15px 30px 15px;
+            margin: 0;
+        }
+        .bsd {
+            text-align: right;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+            padding-right: 10px;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .daily-reminder {
+            font-weight: bold;
+            color: #d35400;
+            background-color: #fdf2e9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #fad7a1;
+            margin-bottom: 20px;
+        }
+        .privacy-note {
+            font-size: 13px;
+            color: #27ae60;
+            background-color: #eafaf1;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #c8e6c9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .btn {
+            background-color: #27ae60;
+            color: white;
+            padding: 18px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(39, 174, 96, 0.3);
+        }
+        .btn:hover {
+            background-color: #219653;
+        }
+        .btn-secondary {
+            background-color: #95a5a6;
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 5px;
+            box-shadow: none;
+        }
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bsd">בס"ד</div>
+
+<div class="container">
+    <h1>דורשים תחבורה ציבורית ברחובות אילפא ורב ייבא סבא!</h1>
+    <p>שכנים יקרים, אנא מלאו את פרטיכם כדי שהתלונה תהיה רשמית ותחייב מענה. המערכת תכין עבורכם נוסח מוכן ואקראי.</p>
+    
+    <div class="daily-reminder">
+        💡 מומלץ לכל אחד לשלוח מייל דרך האתר פעם ביום! התמדה ולחץ יומיומי על המערכת הם המפתח שלנו להצלחה.
+    </div>
+
+    <div class="privacy-note">
+        🔒 <strong>חשוב לדעת:</strong> המידע שאתם מזינים כאן אינו נשמר בשום מקום! הוא משמש אך ורק ליצירת המייל בדפדפן שלכם.
+    </div>
+    
+    <div class="form-group">
+        <label for="userName">שם מלא:</label>
+        <input type="text" id="userName" placeholder="לדוגמה: ישראל ישראלי">
+    </div>
+    
+    <div class="form-group">
+        <label for="userId">תעודת זהות:</label>
+        <input type="text" id="userId" placeholder="הקלידו מספר ת.ז">
+    </div>
+    
+    <div class="form-group">
+        <label for="userAddress">כתובת מגורים:</label>
+        <input type="text" id="userAddress" placeholder="לדוגמה: רב ייבא סבא 8, בית שמש">
+    </div>
+    
+    <div class="form-group">
+        <label for="userPhone">מספר טלפון:</label>
+        <input type="text" id="userPhone" placeholder="להתקשרות ממשרד התחבורה">
+    </div>
+
+    <button class="btn" onclick="processEmail('open')">לחצו כאן לפתיחת המייל ושליחה אוטומטית</button>
+    <button class="btn btn-secondary" onclick="processEmail('copy')">רק אם הכפתור הירוק לא עבד: לחצו כאן להעתקת הטקסט</button>
+</div>
+
+<script>
+    function generateContent() {
+        const name = document.getElementById('userName').value.trim();
+        const id = document.getElementById('userId').value.trim();
+        const address = document.getElementById('userAddress').value.trim();
+        const phone = document.getElementById('userPhone').value.trim();
+
+        if (!name || !id || !address || !phone) {
+            alert("אנא מלאו את כל הפרטים האישיים כדי שנוכל לייצר עבורכם תלונה רשמית.");
+            return null;
+        }
+
+        const subjects = [
+            "בקשה דחופה להפעלת תחבורה ציבורית ברחובות אילפא ורב ייבא סבא, בית שמש",
+            "דרישה למתן שירותי תחבורה ציבורית - אילפא ורב ייבא סבא (בית שמש)",
+            "תלונה: היעדר קווי אוטובוס וניתוק תחבורתי ברחובות אילפא ורב ייבא סבא",
+            "הפרת הנחיות משרד התחבורה - חוסר בשירות ברחובות אילפא ורב ייבא סבא",
+            "פניית תושבים: בקשה לסיור שטח והפעלת קווי הזנה - אילפא ורב ייבא סבא"
+        ];
+
+        const templates = [
+            "לכבוד משרד התחבורה.\n\nאני מתגורר/ת באזור הרחובות אילפא ורב ייבא סבא בבית שמש. בקצה רחוב אילפא וכן ברחוב רב ייבא סבא תחתיו קיימות תשתיות מוכנות לתחבורה ציבורית (סובות תקניות לסיבוב), אך שני הרחובות סובלים מניתוק חמור מתחבורה. מרחק ההליכה שלנו לתחנה הקרובה חורג משמעותית מהתקן המוגדר ב'הנחיות לתכנון תחבורה ציבורית' (עמ' 51). אנו דורשים אישור לכניסת קווי הזנה לאלתר.",
+            
+            "לכבוד פניות הציבור, משרד התחבורה.\n\nהרחובות אילפא ורב ייבא סבא בבית שמש מנותקים לחלוטין מתחבורה. המצב מפר את הנחיות משרד התחבורה לגבי מרחקי הליכה סבירים. הצעידה היומיומית היא קשה מנשוא בעליות של בית שמש. קיימות סובות בשני הרחובות שאושרו להסתובבות, ונדרש סיור שטח של מתכנן המחוז כדי להשמיש את התשתיות ולתקן את המעוות.",
+            
+            "לכבוד הרשות הארצית לתחבורה ציבורית.\n\nאני פונה אליכם בדרישה להפעלת קווי אוטובוס ברחובות אילפא ורב ייבא סבא בבית שמש. באילפא וגם ברב ייבא סבא ישנן 'סובות' שיכולות לשמש מיניבוסים, אך מניעת השירות משאירה אותן כפיל לבן ויוצרת ניתוק חמור. אבקש לאשר הפעלת קווי הזנה לרחובות אלו ולמנוע את האפליה הבוטה בשירות לעומת שכונות אחרות.",
+            
+            "לכבוד משרד התחבורה.\n\nאנו תושבי הרחובות אילפא ורב ייבא סבא. הושקעו כספי ציבור בבניית תשתית ורחבות הסתובבות (סובות) גם באילפא וגם ברב ייבא סבא, אך הן עומדות כאבן שאין לה הופכין. מניעת כניסת אוטובוסים מאלצת אותנו ואת ילדינו לצעוד מרחקים בלתי סבירים בניגוד להנחיותיכם. אבקש לאשר הפעלת קווי תחבורה לאזור, גם אם במתכונת מצומצמת.",
+            
+            "לפניות הציבור, משרד התחבורה.\n\nפנייה זו באה להציף את מצוקתם הקשה של תושבי אילפא ורב ייבא סבא. בעוד שבשני הרחובות נבנו מראש תשתיות מלאות וסובות להסתובבות אוטובוסים שאינן מנוצלות, אנו מנותקים לחלוטין ונדרשים להליכה מאומצת ובלתי תקנית לתחנה (הפרה של עמ' 51 בהנחיות המשרד). אנו דורשים תחבורה נגישה כפי שקיים ברחובות דומים.",
+            
+            "לכבוד הרשות הארצית לתחבורה ציבורית.\n\nשלום רב. אזור הרחובות אילפא ורב ייבא סבא בבית שמש מנותק לחלוטין משירותי אוטובוסים, למרות שגם באילפא וגם ברב ייבא סבא קיימות כיכרות וסובות המיועדות להסתובבות. ההליכה לתחנה הקרובה היא סיוט יומיומי שחורג מהמותר בהנחיותיכם. אנו דורשים לאפשר כניסת קווי מיניבוס/מידיבוס לרחובות אלו בהקדם האפשרי. מצפים למענה ענייני.",
+            
+            "לכבוד משרד התחבורה.\n\nאנו מתגוררים באזור הרחובות אילפא ורב ייבא סבא בבית שמש. בעוד שברחוב אילפא וברחוב רב ייבא סבא ישנן סובות מוכנות שאינן בשימוש, אנו נאלצים לטפס בעליות התלולות עם ילדינו למרחקים העולים בהרבה על המותר ב'הנחיות לתכנון תחבורה ציבורית' על מנת להגיע לתחנה. אנו דורשים הפעלת קווי הזנה לרחובות אלו לאלתר.",
+            
+            "לפניות הציבור, משרד התחבורה.\n\nפנייה זו באה להציף את הניתוק החמור של תושבי הרחובות אילפא ורב ייבא סבא מתחבורה ציבורית. כדי להגיע לתחנה הקרובה אנו צועדים במצטבר מרחקים בלתי סבירים לחלוטין. קיימת תשתית וסובות מוכנות גם ברחוב אילפא וגם ברב ייבא סבא שניתן להשמיש מיד לכניסת מיניבוסים. אבקש את התערבותכם הדחופה לתיקון המצב ולביצוע סיור שטח.",
+            
+            "לכבוד הרשות הארצית לתחבורה ציבורית.\n\nמצוקת התחבורה ברחובות אילפא ורב ייבא סבא דורשת פתרון מיידי. במקום לנצל את רחבות ההסתובבות (סובות) שכבר נבנו בשני הרחובות מכספי ציבור, הרשויות מתעלמות ואנו סובלים מניתוק מוחלט מהשירות. הליכה ממושכת זו מהווה פגיעה חמורה בשירות ובהנחיות המשרד. נבקש סיור במקום ואישור קווים למען התושבים."
+        ];
+
+        const randomSubjectIndex = Math.floor(Math.random() * subjects.length);
+        const randomTemplateIndex = Math.floor(Math.random() * templates.length);
+        
+        const selectedSubject = subjects[randomSubjectIndex];
+        const selectedTemplate = templates[randomTemplateIndex];
+
+        const personalSignature = "\n\nבברכה,\n" + name + "\nת.ז: " + id + "\nכתובת: " + address + "\nטלפון: " + phone;
+        
+        return {
+            email: "pniotcrm@mot.gov.il",
+            subject: selectedSubject,
+            body: selectedTemplate + personalSignature
+        };
+    }
+
+    function processEmail(action) {
+        const content = generateContent();
+        if (!content) return; 
+
+        if (action === 'open') {
+            const mailtoLink = "mailto:" + content.email + 
+                               "?subject=" + encodeURIComponent(content.subject) + 
+                               "&body=" + encodeURIComponent(content.body);
+            window.location.href = mailtoLink;
+        } else if (action === 'copy') {
+            const fullTextToCopy = "נמען: " + content.email + "\n" +
+                                   "נושא: " + content.subject + "\n\n" + 
+                                   "--- גוף ההודעה להדבקה ---\n\n" + 
+                                   content.body;
+            
+            var textArea = document.createElement("textarea");
+            textArea.value = fullTextToCopy;
+            textArea.style.position = "fixed";
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.opacity = "0";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                if (successful) {
+                    alert("הטקסט הועתק בהצלחה לזיכרון של המכשיר!\n\nמה עושים עכשיו?\n1. פתחו את אפליקציית המייל שלכם (למשל Gmail).\n2. לחצו על אימייל חדש.\n3. הדביקו את הטקסט.\n4. שלחו לכתובת: pniotcrm@mot.gov.il");
+                } else {
+                    alert("אירעה שגיאה בהעתקה, אנא נסו שוב.");
+                }
+            } catch (err) {
+                alert("אירעה שגיאה בהעתקה. המכשיר חוסם פעולה זו.");
+            }
+            document.body.removeChild(textArea);
+        }
+    }
+</script>
+
+</body>
+</html>
