@@ -195,6 +195,7 @@
     <button class="btn" onclick="processEmail('open')">לחצו כאן לפתיחת המייל ושליחה אוטומטית</button>
     <button class="btn btn-secondary" onclick="processEmail('copy')">רק אם הכפתור הירוק לא עבד: לחצו כאן להעתקת הטקסט</button>
 
+    <!-- קופסת ההעתקה הידנית -->
     <div id="manualCopySection" class="manual-copy-box">
         <h3>הוראות להשלמת השליחה הידנית</h3>
         <p>✅ <strong>גוף ההודעה הועתק בהצלחה!</strong> פתחו את המייל שלכם והדביקו אותו בתוך ההודעה החדשה.</p>
@@ -231,7 +232,14 @@
             "דרישה למתן שירותי תחבורה ציבורית - אילפא ורב ייבא סבא (בית שמש)",
             "תלונה: היעדר קווי אוטובוס וניתוק תחבורתי ברחובות אילפא ורב ייבא סבא",
             "הפרת הנחיות משרד התחבורה - חוסר בשירות ברחובות אילפא ורב ייבא סבא",
-            "פניית תושבים: בקשה לסיור שטח והפעלת קווי הזנה - אילפא ורב ייבא סבא"
+            "פניית תושבים: בקשה לסיור שטח והפעלת קווי הזנה - אילפא ורב ייבא סבא",
+            "מצוקת התחבורה באילפא ורב ייבא סבא - דרישה לטיפול מיידי",
+            "קריאה דחופה מתושבי רמת בית שמש ד' 4 - נדרשת תחבורה ציבורית",
+            "היעדר שירותי אוטובוסים בסיסיים ברחובות אילפא ורב ייבא סבא",
+            "פנייה רשמית: מחדל התחבורה ברחובות אילפא ורב ייבא סבא",
+            "סבל התושבים בהיעדר קווי אוטובוס פנימיים - אילפא ורב ייבא סבא",
+            "בקשה להחריג את רחובות אילפא ורב ייבא סבא ולהכניס קו תחבורה",
+            "דרישה ליישום פתרון תחבורתי (שאטל או קו פנימי) ברחובותינו"
         ];
 
         const templates = [
@@ -263,9 +271,14 @@
         const randomSubjectIndex = Math.floor(Math.random() * subjects.length);
         const randomTemplateIndex = Math.floor(Math.random() * templates.length);
         
-        const selectedSubject = subjects[randomSubjectIndex];
+        // יצירת תאריך נוכחי בפורמט DD.MM כדי למנוע קיבוץ הודעות
+        const today = new Date();
+        const dateString = today.getDate() + "." + (today.getMonth() + 1);
+        
+        // צירוף התאריך לשורת הנושא
+        const selectedSubject = subjects[randomSubjectIndex] + " (" + dateString + ")";
+        
         const selectedTemplate = templates[randomTemplateIndex];
-
         const personalSignature = "\n\nבברכה,\n" + name + "\nת.ז: " + id + "\nכתובת: " + address + "\nטלפון: " + phone;
         
         return {
