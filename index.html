@@ -12,6 +12,13 @@
             padding: 10px 15px 30px 15px;
             margin: 0;
         }
+        .bsd {
+            text-align: right;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+            padding-right: 10px;
+        }
         .container {
             background-color: white;
             padding: 30px;
@@ -155,6 +162,8 @@
 </head>
 <body>
 
+<div class="bsd">בס"ד</div>
+
 <div class="container">
     <h1>טופס מהיר לשליחת פנייה למשרד התחבורה</h1>
     <p class="subtitle">דורשים תחבורה ציבורית באילפא ורב ייבא סבא!</p>
@@ -192,7 +201,6 @@
     <button class="btn" onclick="processEmail('open')">לחצו כאן לפתיחת המייל ושליחה אוטומטית</button>
     <button class="btn btn-secondary" onclick="processEmail('copy')">רק אם הכפתור הירוק לא עבד: לחצו כאן להעתקת הטקסט</button>
 
-    <!-- קופסת ההעתקה הידנית -->
     <div id="manualCopySection" class="manual-copy-box">
         <h3>הוראות להשלמת השליחה הידנית</h3>
         <p>✅ <strong>גוף ההודעה הועתק בהצלחה!</strong> פתחו את המייל שלכם והדביקו אותו בתוך ההודעה החדשה.<br><small>(אם גוף ההודעה נמחק לכם מההעתקה בטעות, תוכלו להעתיק אותו שוב בסעיף 3 למטה)</small></p>
@@ -311,11 +319,18 @@
             try {
                 var successful = document.execCommand('copy');
                 if (successful) {
-                    document.getElementById('manualCopySection').style.display = 'block';
+                    var manualSection = document.getElementById('manualCopySection');
+                    manualSection.style.display = 'block';
                     document.getElementById('copySubjectField').value = content.subject;
                     document.getElementById('copyBodyField').value = content.body;
                     
-                    alert("✅ גוף ההודעה הועתק בהצלחה ללוח!\n\nאנא גללו למטה באתר כדי להעתיק בקלות גם את כתובת הנמען ונושא המייל.");
+                    // גלילה חלקה למטה
+                    manualSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // השהייה קלה לפני ההודעה הקופצת כדי שהמסך יספיק לגלול
+                    setTimeout(function() {
+                        alert("✅ גוף ההודעה הועתק בהצלחה ללוח!\n\nהמסך גלל למטה אל ההוראות - העתיקו משם בקלות גם את כתובת הנמען ונושא המייל.");
+                    }, 300);
                 } else {
                     alert("אירעה שגיאה בהעתקה, אנא נסו שוב.");
                 }
