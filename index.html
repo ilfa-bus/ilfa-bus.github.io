@@ -66,8 +66,8 @@
         }
         .privacy-note {
             font-size: 14px;
-            color: #444; /* צבע טקסט אפור כהה וקריא */
-            background-color: #f9f9f9; /* רקע אפור בהיר וניטרלי */
+            color: #444;
+            background-color: #f9f9f9;
             padding: 12px;
             border-radius: 5px;
             margin-bottom: 20px;
@@ -126,6 +126,11 @@
             border-radius: 5px;
             box-shadow: none;
             margin-bottom: 15px;
+            width: 100%;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
         }
         .btn-secondary:hover {
             background-color: #7f8c8d;
@@ -274,7 +279,12 @@
     </div>
 
     <button class="btn" onclick="processEmail('open')">לחצו כאן לפתיחת המייל ושליחה אוטומטית</button>
-    <button class="btn btn-secondary" onclick="processEmail('copy')">רק אם הכפתור הירוק לא עבד: לחצו כאן להעתקת הטקסט</button>
+    
+    <div id="emailFallbackWarning" style="display: none; color: #c0392b; font-weight: bold; margin-bottom: 15px; background-color: #fadbd8; padding: 10px; border-radius: 5px;">
+        ⏳ מנסה לפתוח את המייל... <br>אם לא נפתח לכם חלון הודעה חדש כעת, המחשב שלכם חוסם זאת. <strong>אנא לחצו על הכפתור האפור למטה.</strong>
+    </div>
+
+    <button class="btn btn-secondary" onclick="processEmail('copy')">לא נפתח לכם חלון המייל? לחצו כאן להעתקה ושליחה ידנית</button>
 
     <hr>
     
@@ -412,6 +422,9 @@
 
         if (action === 'open') {
             gtag('event', 'send_email_clicked', { 'event_category': 'Buttons', 'event_label': 'Green Send Button' });
+            
+            // מציג את הודעת ההכוונה למקרה שהמייל לא נפתח
+            document.getElementById('emailFallbackWarning').style.display = 'block';
             
             const mailtoLink = "mailto:" + content.email + 
                                "?subject=" + encodeURIComponent(content.subject) + 
