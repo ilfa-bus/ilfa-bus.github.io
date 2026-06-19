@@ -22,13 +22,6 @@
             padding: 10px 15px 30px 15px;
             margin: 0;
         }
-        .bsd {
-            text-align: right;
-            font-weight: bold;
-            color: #555;
-            margin-bottom: 10px;
-            padding-right: 10px;
-        }
         .container {
             background-color: white;
             padding: 30px;
@@ -37,6 +30,14 @@
             max-width: 600px;
             margin: 0 auto;
             margin-top: 20px;
+            position: relative; /* הוסף כדי לשמור על היישור הפנימי */
+        }
+        .bsd {
+            text-align: right;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 14px;
         }
         h1 {
             color: #2c3e50;
@@ -199,9 +200,9 @@
 </head>
 <body>
 
-<div class="bsd">בס"ד</div>
-
 <div class="container">
+    <div class="bsd">בס"ד</div>
+    
     <h1>טופס מהיר לשליחת פנייה במייל למשרד התחבורה</h1>
     <p class="subtitle">דורשים תחבורה ציבורית באילפא ורב ייבא סבא!</p>
     
