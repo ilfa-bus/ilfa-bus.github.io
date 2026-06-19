@@ -380,11 +380,15 @@
         if (!content) return; 
 
         if (action === 'open') {
+            gtag('event', 'send_email_clicked', { 'event_category': 'Buttons', 'event_label': 'Green Send Button' });
+            
             const mailtoLink = "mailto:" + content.email + 
                                "?subject=" + encodeURIComponent(content.subject) + 
                                "&body=" + encodeURIComponent(content.body);
             window.location.href = mailtoLink;
         } else if (action === 'copy') {
+            gtag('event', 'copy_text_clicked', { 'event_category': 'Buttons', 'event_label': 'Gray Copy Button' });
+
             var textArea = document.createElement("textarea");
             textArea.value = content.body;
             textArea.style.position = "fixed";
@@ -433,6 +437,8 @@
     }
 
     function shareSiteViaEmail() {
+        gtag('event', 'share_site_clicked', { 'event_category': 'Buttons', 'event_label': 'Blue Share Button' });
+
         const siteUrl = "https://ilfa-bus.github.io/";
         const subject = "הצטרפו למאבק על התחבורה באילפא ורב ייבא סבא!";
         const body = "שכנים יקרים,\n\nהקמנו אתר חדש ומהיר שמאפשר לשלוח פנייה רשמית למשרד התחבורה בקליק אחד, כדי לדרוש תחבורה ציבורית לרחובות שלנו.\n\nאנא כנסו לקישור, שלחו פנייה אחת ביום, ושתפו הלאה:\n" + siteUrl;
