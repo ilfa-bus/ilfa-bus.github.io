@@ -30,7 +30,7 @@
             max-width: 600px;
             margin: 0 auto;
             margin-top: 20px;
-            position: relative; /* הוסף כדי לשמור על היישור הפנימי */
+            position: relative;
         }
         .bsd {
             text-align: right;
@@ -83,7 +83,7 @@
             font-weight: bold;
             color: #333;
         }
-        input[type="text"] {
+        input[type="text"], input[type="tel"] {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
@@ -237,7 +237,8 @@
     
     <div class="form-group">
         <label for="userId">תעודת זהות:</label>
-        <input type="text" id="userId" placeholder="הקלידו מספר ת.ז">
+        <!-- inputmode="numeric" מקפיץ את מקלדת המספרים בנייד -->
+        <input type="text" id="userId" inputmode="numeric" pattern="[0-9]*" placeholder="הקלידו מספר ת.ז">
     </div>
     
     <div class="form-group">
@@ -247,7 +248,8 @@
     
     <div class="form-group">
         <label for="userPhone">מספר טלפון:</label>
-        <input type="text" id="userPhone" placeholder="להתקשרות ממשרד התחבורה">
+        <!-- type="tel" מקפיץ גם כן מקלדת טלפון ייעודית -->
+        <input type="tel" id="userPhone" placeholder="להתקשרות ממשרד התחבורה">
     </div>
 
     <button class="btn" onclick="processEmail('open')">לחצו כאן לפתיחת המייל ושליחה אוטומטית</button>
@@ -289,7 +291,9 @@
         const name = document.getElementById('userName').value.trim();
         const id = document.getElementById('userId').value.trim();
         const address = document.getElementById('userAddress').value.trim();
-        const phone = document.getElementById('userPhone').value.trim();
+        
+        // מנקה רווחים או מקפים ממספר הטלפון אם הוכנסו בטעות
+        const phone = document.getElementById('userPhone').value.replace(/[\s-]/g, '').trim();
 
         if (!name || !id || !address || !phone) {
             alert("אנא מלאו את כל הפרטים האישיים כדי שנוכל לייצר עבורכם תלונה רשמית.");
