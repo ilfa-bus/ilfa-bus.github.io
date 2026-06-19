@@ -119,6 +119,23 @@
         .btn-secondary:hover {
             background-color: #7f8c8d;
         }
+        .btn-share {
+            background-color: #3498db;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+        }
+        .btn-share:hover {
+            background-color: #2980b9;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #e0e0e0;
+            margin: 25px 0;
+        }
         
         /* עיצוב לקופסת ההעתקה הידנית */
         .manual-copy-box {
@@ -210,6 +227,10 @@
 
     <button class="btn" onclick="processEmail('open')">לחצו כאן לפתיחת המייל ושליחה אוטומטית</button>
     <button class="btn btn-secondary" onclick="processEmail('copy')">רק אם הכפתור הירוק לא עבד: לחצו כאן להעתקת הטקסט</button>
+
+    <hr>
+    
+    <button class="btn btn-share" onclick="shareSiteViaEmail()">✉️ שתפו את האתר לשכנים במייל</button>
 
     <!-- קופסת ההעתקה הידנית -->
     <div id="manualCopySection" class="manual-copy-box">
@@ -369,6 +390,15 @@
         } catch (err) {
             alert("שגיאה בהעתקה.");
         }
+    }
+
+    function shareSiteViaEmail() {
+        const siteUrl = "https://ilfa-bus.github.io/";
+        const subject = "הצטרפו למאבק על התחבורה באילפא ורב ייבא סבא!";
+        const body = "שכנים יקרים,\n\nהקמנו אתר חדש ומהיר שמאפשר לשלוח פנייה רשמית למשרד התחבורה בקליק אחד, כדי לדרוש תחבורה ציבורית לרחובות שלנו.\n\nאנא כנסו לקישור, שלחו פנייה אחת ביום, ושתפו הלאה:\n" + siteUrl;
+        
+        const mailtoLink = "mailto:?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        window.location.href = mailtoLink;
     }
 </script>
 
