@@ -90,8 +90,8 @@
             border-radius: 5px;
             box-sizing: border-box;
             font-size: 16px;
-            text-align: right; /* יישור הטקסט והמספרים לימין */
-            direction: rtl; /* הגדרת כיווניות לימין */
+            text-align: right;
+            direction: rtl;
         }
         .radio-group label {
             font-weight: normal;
@@ -290,8 +290,9 @@
 
     <hr>
     
-    <button class="btn-whatsapp" onclick="shareSiteViaWhatsApp()">💬 שתפו את האתר לשכנים בוואטסאפ</button>
+    <!-- הסדר שונה כאן: המייל מופיע ראשון, ואחריו הוואטסאפ -->
     <button class="btn-share" onclick="shareSiteViaEmail()">✉️ שתפו את האתר לשכנים במייל</button>
+    <button class="btn-whatsapp" onclick="shareSiteViaWhatsApp()">💬 שתפו את האתר לשכנים בוואטסאפ</button>
 
     <!-- קופסת ההעתקה הידנית -->
     <div id="manualCopySection" class="manual-copy-box">
@@ -425,8 +426,11 @@
         if (action === 'open') {
             gtag('event', 'send_email_clicked', { 'event_category': 'Buttons', 'event_label': 'Green Send Button' });
             
-            // מציג את הודעת ההכוונה למקרה שהמייל לא נפתח
-            document.getElementById('emailFallbackWarning').style.display = 'block';
+            // מציג את הודעת ההכוונה רק אם היא קיימת (מונע קריסות של הכפתור)
+            const warningEl = document.getElementById('emailFallbackWarning');
+            if (warningEl) {
+                warningEl.style.display = 'block';
+            }
             
             const mailtoLink = "mailto:" + content.email + 
                                "?subject=" + encodeURIComponent(content.subject) + 
