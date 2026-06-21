@@ -360,7 +360,7 @@
         <input type="tel" id="userPhone" placeholder="להתקשרות ממשרד התחבורה">
     </div>
 
-    <!-- כפתורים -->
+    <!-- כפתורים מעודכנים בסדר החדש -->
     <button class="btn-gmail" onclick="processEmail('gmail_web')">✉️ שליחה דרך ג'ימייל בדפדפן (למשתמשי מחשב)</button>
     <button class="btn" onclick="processEmail('open')">📱 לחצו כאן לפתיחת המייל באפליקציה (למשתמשי טלפון)</button>
     
@@ -372,7 +372,7 @@
 
     <hr>
     
-    <button class="btn-share" onclick="shareSiteViaEmail()">✉️ שתפו את האתר לשכנים במייל</button>
+    <button class="btn-share" onclick="shareSiteViaEmail()">✉️ שתפו את האתר לשכנים במייל (למשתמשי מחשב)</button>
     <button class="btn-whatsapp" onclick="shareSiteViaWhatsApp()">💬 שתפו את האתר לשכנים בוואטסאפ</button>
 
     <!-- קופסת ההעתקה הידנית -->
@@ -582,10 +582,11 @@
 
         const siteUrl = "https://ilfa-bus.github.io/";
         const subject = "הצטרפו למאבק על התחבורה באילפא ורב ייבא סבא!";
-        const body = "שכנים יקרים,\n\nהקמנו אתר חדש ומהיר שמאפשר לשלוח פנייה רשמית למשרד התחבורה בקליק אחד, כדי לדרוש תחבורה ציבורית לרחובות שלנו.\n\nאנא כנסו לקישור, שלחו פנייה אחת ביום, ושתפו הלאה:\n" + siteUrl;
+        const body = "שכנים יקרים,\n\nהוקם אתר חדש ומהיר שמאפשר לשלוח פנייה רשמית למשרד התחבורה בקליק אחד, כדי לדרוש תחבורה ציבורית לרחובות שלנו.\n\nאנא כנסו לקישור, שלחו פנייה אחת ביום, ושתפו הלאה:\n" + siteUrl;
         
-        const mailtoLink = "mailto:?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-        window.location.href = mailtoLink;
+        // מעבר לשליחה דרך ג'ימייל בדפדפן במקום mailto
+        const gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        window.open(gmailLink, '_blank');
     }
 
     function shareSiteViaWhatsApp() {
