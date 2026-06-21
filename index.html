@@ -86,7 +86,7 @@
         .progress-bar {
             background-color: #27ae60;
             height: 100%;
-            width: 6.3%; 
+            width: 0%; /* מעודכן אוטומטית דרך הקוד למטה */
             transition: width 1s ease-in-out;
             background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
             background-size: 1rem 1rem;
@@ -305,14 +305,14 @@
     <h1>טופס מהיר לשליחת פנייה במייל למשרד התחבורה</h1>
     <p class="subtitle">דורשים תחבורה ציבורית באילפא ורב ייבא סבא!</p>
     
-    <!-- מד התקדמות -->
+    <!-- מד התקדמות מחובר למשתנים -->
     <div class="progress-section">
         <div class="progress-title">🎯 יעד המאבק: 2,000 פניות! עזרו לנו להגיע אליו.</div>
         <div class="progress-container">
-            <div class="progress-bar" style="width: 6.3%;"></div>
+            <div id="dynamicProgressBar" class="progress-bar" style="width: 0%;"></div>
         </div>
         <div class="progress-text">
-            נשלחו כבר <span class="highlight">126</span> פניות. חסרות עוד 1,874 לשם השגת היעד.
+            נשלחו כבר <span id="dynamicCurrentCount" class="highlight">0</span> פניות. חסרות עוד <span id="dynamicRemainingCount">0</span> לשם השגת היעד.
         </div>
     </div>
     
@@ -360,7 +360,7 @@
         <input type="tel" id="userPhone" placeholder="להתקשרות ממשרד התחבורה">
     </div>
 
-    <!-- כפתורים מעודכנים בסדר החדש -->
+    <!-- כפתורים -->
     <button class="btn-gmail" onclick="processEmail('gmail_web')">✉️ שליחה דרך ג'ימייל בדפדפן (למשתמשי מחשב)</button>
     <button class="btn" onclick="processEmail('open')">📱 לחצו כאן לפתיחת המייל באפליקציה (למשתמשי טלפון)</button>
     
@@ -402,7 +402,22 @@
 </div>
 
 <script>
+    // ==============================================================
+    // כאן מעדכנים את מספרי הפניות - פשוט לשנות את המספר ולשמור!
+    // ==============================================================
+    const CURRENT_SUBMISSIONS = 342; // <-- עדכן כאן את כמות הפניות
+    const TARGET_SUBMISSIONS = 2000; // היעד הכללי
+    // ==============================================================
+
     window.onload = function() {
+        // עדכון אוטומטי של מד ההתקדמות (טקסט ואחוזים)
+        document.getElementById('dynamicCurrentCount').innerText = CURRENT_SUBMISSIONS.toLocaleString('he-IL');
+        let remaining = TARGET_SUBMISSIONS - CURRENT_SUBMISSIONS;
+        document.getElementById('dynamicRemainingCount').innerText = (remaining > 0 ? remaining : 0).toLocaleString('he-IL');
+        let percentage = (CURRENT_SUBMISSIONS / TARGET_SUBMISSIONS) * 100;
+        document.getElementById('dynamicProgressBar').style.width = Math.min(percentage, 100) + '%';
+
+        // משיכת נתונים שמורים של המשתמש
         if(localStorage.getItem('userName')) document.getElementById('userName').value = localStorage.getItem('userName');
         if(localStorage.getItem('userId')) document.getElementById('userId').value = localStorage.getItem('userId');
         if(localStorage.getItem('userAddress')) document.getElementById('userAddress').value = localStorage.getItem('userAddress');
