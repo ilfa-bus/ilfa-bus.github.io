@@ -86,8 +86,7 @@
         .progress-bar {
             background-color: #27ae60;
             height: 100%;
-            /* האחוז מעודכן ל-6% (119 מתוך 2000) */
-            width: 6%; 
+            width: 6.3%; 
             transition: width 1s ease-in-out;
             background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
             background-size: 1rem 1rem;
@@ -172,6 +171,24 @@
         }
         .btn:hover {
             background-color: #219653;
+        }
+        .btn-gmail {
+            background-color: #ea4335;
+            color: white;
+            padding: 18px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(234, 67, 53, 0.3);
+        }
+        .btn-gmail:hover {
+            background-color: #c5221f;
         }
         .btn-secondary {
             background-color: #95a5a6;
@@ -292,11 +309,10 @@
     <div class="progress-section">
         <div class="progress-title">🎯 יעד המאבק: 2,000 פניות! עזרו לנו להגיע אליו.</div>
         <div class="progress-container">
-            <!-- כדי לעדכן את הפס, יש לשנות את המספר ב-width (כרגע 6%) -->
-            <div class="progress-bar" style="width: 6%;"></div>
+            <div class="progress-bar" style="width: 6.3%;"></div>
         </div>
         <div class="progress-text">
-            נשלחו כבר <span class="highlight">119</span> פניות. חסרות עוד 1,881 לשם השגת היעד.
+            נשלחו כבר <span class="highlight">126</span> פניות. חסרות עוד 1,874 לשם השגת היעד.
         </div>
     </div>
     
@@ -344,13 +360,15 @@
         <input type="tel" id="userPhone" placeholder="להתקשרות ממשרד התחבורה">
     </div>
 
-    <button class="btn" onclick="processEmail('open')">לחצו כאן לפתיחת המייל ושליחה אוטומטית</button>
+    <!-- כפתורים מעודכנים -->
+    <button class="btn" onclick="processEmail('open')">לחצו כאן לפתיחת המייל (מומלץ לטלפונים)</button>
+    <button class="btn-gmail" onclick="processEmail('gmail_web')">✉️ שליחה דרך ג'ימייל בדפדפן (למשתמשי מחשב)</button>
     
     <div id="emailFallbackWarning" style="display: none; color: #c0392b; font-weight: bold; margin-bottom: 15px; background-color: #fadbd8; padding: 10px; border-radius: 5px;">
-        ⏳ מנסה לפתוח את המייל... <br>אם לא נפתחה לכם הודעה חדשה כעת, המחשב שלכם חוסם זאת. <strong>אנא לחצו על הכפתור האפור למטה.</strong>
+        ⏳ מנסה לפתוח את המייל... <br>אם לא נפתחה לכם הודעה חדשה כעת, המחשב שלכם חוסם זאת. <strong>אנא לחצו על הכפתור האדום או האפור.</strong>
     </div>
 
-    <button class="btn btn-secondary" onclick="processEmail('copy')">לא נפתח לכם חלון המייל? לחצו כאן להעתקה ושליחה ידנית</button>
+    <button class="btn btn-secondary" onclick="processEmail('copy')">שתי האפשרויות למעלה לא עבדו? לחצו להעתקה ושליחה ידנית</button>
 
     <hr>
     
@@ -384,7 +402,6 @@
 </div>
 
 <script>
-    // טעינת הנתונים שנשמרו בעבר כשהדף נטען
     window.onload = function() {
         if(localStorage.getItem('userName')) document.getElementById('userName').value = localStorage.getItem('userName');
         if(localStorage.getItem('userId')) document.getElementById('userId').value = localStorage.getItem('userId');
@@ -413,7 +430,6 @@
             return null;
         }
 
-        // שמירת הנתונים בדפדפן לפעם הבאה
         localStorage.setItem('userName', name);
         localStorage.setItem('userId', id);
         localStorage.setItem('userAddress', address);
@@ -498,6 +514,15 @@
                                "?subject=" + encodeURIComponent(content.subject) + 
                                "&body=" + encodeURIComponent(content.body);
             window.location.href = mailtoLink;
+            
+        } else if (action === 'gmail_web') {
+            gtag('event', 'send_gmail_web_clicked', { 'event_category': 'Buttons', 'event_label': 'Red Gmail Web Button' });
+            
+            const gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=" + content.email + 
+                              "&su=" + encodeURIComponent(content.subject) + 
+                              "&body=" + encodeURIComponent(content.body);
+            window.open(gmailLink, '_blank');
+
         } else if (action === 'copy') {
             gtag('event', 'copy_text_clicked', { 'event_category': 'Buttons', 'event_label': 'Gray Copy Button' });
 
