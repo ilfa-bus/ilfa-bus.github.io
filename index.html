@@ -584,7 +584,6 @@
         const subject = "הצטרפו למאבק על התחבורה באילפא ורב ייבא סבא!";
         const body = "שכנים יקרים,\n\nהוקם אתר חדש ומהיר שמאפשר לשלוח פנייה רשמית למשרד התחבורה בקליק אחד, כדי לדרוש תחבורה ציבורית לרחובות שלנו.\n\nאנא כנסו לקישור, שלחו פנייה אחת ביום, ושתפו הלאה:\n" + siteUrl;
         
-        // מעבר לשליחה דרך ג'ימייל בדפדפן במקום mailto
         const gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
         window.open(gmailLink, '_blank');
     }
@@ -592,7 +591,7 @@
     function shareSiteViaWhatsApp() {
         gtag('event', 'share_whatsapp_clicked', { 'event_category': 'Buttons', 'event_label': 'WhatsApp Share Button' });
 
-        const text = "שכנים יקרים, הצטרפו למאבק על התחבורה באילפא ורב ייבא סבא!\n\nהקמנו אתר חדש ומהיר שמאפשר לשלוח פנייה רשמית למשרד התחבורה בקליק אחד.\n\nאנא כנסו לקישור, שלחו פנייה אחת ביום, ושתפו הלאה בקבוצות של השכונה:\nhttps://ilfa-bus.github.io/";
+        const text = "שכנים יקרים, הצטרפו למאבק על התחבורה באילפא ורב ייבא סבא!\n\nהוקם אתר חדש ומהיר שמאפשר לשלוח פנייה רשמית למשרד התחבורה בקליק אחד.\n\nאנא כנסו לקישור, שלחו פנייה אחת ביום, ושתפו הלאה בקבוצות של השכונה:\nhttps://ilfa-bus.github.io/";
         const waLink = "https://wa.me/?text=" + encodeURIComponent(text);
         window.open(waLink, '_blank');
     }
