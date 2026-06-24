@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C1CPQND8VB"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,9 +14,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- הגדרות SEO מקומי למנועי חיפוש -->
     <meta name="description" content="הצטרפו למאבק התחבורה של תושבי רמת בית שמש ד' 4. שלחו פנייה מהירה למשרד התחבורה בדרישה להפעלת קווי אוטובוס וחלופה לקו 26 ברחובות אילפא ורב ייבא סבא.">
     <meta name="keywords" content="תחבורה ציבורית, בית שמש, רמה ד 4, רמב''ש ד, אילפא, רב ייבא סבא, קו 26, משרד התחבורה, תלונות ציבור, אוטובוסים, תחנות אוטובוס">
     
+    <!-- תגיות מטא לשיתוף -->
     <meta property="og:title" content="דורשים תחבורה ציבורית לאילפא ורב ייבא סבא!" />
     <meta property="og:description" content="היכנסו עכשיו ושלחו פנייה רשמית למשרד התחבורה בקליק אחד. לוקח 10 שניות ויכול לשנות לנו את המציאות בשכונה!" />
     <meta property="og:image" content="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1000&auto=format&fit=crop" />
@@ -410,7 +413,7 @@
     <div class="bsd">בס"ד</div>
     
     <h1>טופס פנייה רשמי למשרד התחבורה - אילפא ורב ייבא סבא</h1>
-    <p class="subtitle">דורשים קווי אוטובוס ברמה ד' 4!</p>
+    <p class="subtitle">דורשים תחבורה פנימית לאילפא ורב ייבא סבא (ד' 4)!</p>
     
     <div class="progress-section">
         <div class="progress-title">🎯 יעד המאבק: 2,000 פניות! עזרו לנו להגיע אליו.</div>
@@ -516,7 +519,7 @@
     </div>
 
     <div class="seo-text">
-        <strong>מידע אודות יוזמת התושבים:</strong> אתר זה הוקם ומופעל על ידי תושבי רמת בית שמש ד' 4 (רמב"ש ד) במטרה להשמיע את קולנו במאבק לשיפור התחבורה הציבורית בשכונה. אנו מתמודדים עם מרחקי הליכה של למעלה מ-500 מטרים לתחנות קו 26, ודורשים פתרון הולם מהרשות הארצית לתחבורה ציבורית. קריאתנו היא להכניס קווי אוטובוס אל תוך כיכרות ההסתובבות המוסדרות ברחובות אילפא ורב ייבא סבא, בסמוך למרפאת 'מאוחדת', על מנת לספק נגישות סבירה ותקנית למשפחות, לקשישים ולחולים בעיר בית שמש.
+        <strong>מידע אודות יוזמת התושבים:</strong> אתר זה הוקם ומופעל על ידי תושבי רמת בית שמש ד' 4 (רמב"ש ד) במטרה להשמיע את קולנו במאבק לשיפור התחבורה הציבורית בשכונה. אנו מתמודדים עם מרחקי הליכה של למעלה מ-500 מטרים לתחנות קו 26, ודורשים פתרון הולם מהרשות הארצית לתחבורה ציבורית. קריאתנו היא להכניס קווי אוטובוס אל תוך כיכרות ההסתובבות המוסדרות בהמשך רחובות אילפא ורב ייבא סבא. בנוסף, הגישה למרפאת 'מאוחדת' בשכונה דורשת כיום הליכה מפרכת של כ-400 מטר מהתחנות. על מנת לספק נגישות סבירה ותקנית למשפחות, לקשישים ולחולים בעיר בית שמש אנו דורשים תחבורה זמינה כעת.
     </div>
 
 </div>
@@ -547,17 +550,22 @@
         let percentage = (CURRENT_SUBMISSIONS / TARGET_SUBMISSIONS) * 100;
         document.getElementById('dynamicProgressBar').style.width = Math.min(percentage, 100) + '%';
 
-        if(localStorage.getItem('userName')) document.getElementById('userName').value = localStorage.getItem('userName');
-        if(localStorage.getItem('userId')) document.getElementById('userId').value = localStorage.getItem('userId');
-        if(localStorage.getItem('userAddress')) document.getElementById('userAddress').value = localStorage.getItem('userAddress');
-        if(localStorage.getItem('userPhone')) document.getElementById('userPhone').value = localStorage.getItem('userPhone');
-        if(localStorage.getItem('residentType')) {
-            const radios = document.getElementsByName('residentType');
-            for(let i=0; i<radios.length; i++){
-                if(radios[i].value === localStorage.getItem('residentType')){
-                    radios[i].checked = true;
+        // הוספת מנגנון הגנה כדי למנוע קריסה בפתיחת קובץ מקומי
+        try {
+            if(localStorage.getItem('userName')) document.getElementById('userName').value = localStorage.getItem('userName');
+            if(localStorage.getItem('userId')) document.getElementById('userId').value = localStorage.getItem('userId');
+            if(localStorage.getItem('userAddress')) document.getElementById('userAddress').value = localStorage.getItem('userAddress');
+            if(localStorage.getItem('userPhone')) document.getElementById('userPhone').value = localStorage.getItem('userPhone');
+            if(localStorage.getItem('residentType')) {
+                const radios = document.getElementsByName('residentType');
+                for(let i=0; i<radios.length; i++){
+                    if(radios[i].value === localStorage.getItem('residentType')){
+                        radios[i].checked = true;
+                    }
                 }
             }
+        } catch(e) {
+            console.log("Local storage disabled or running locally.");
         }
     };
 
@@ -584,11 +592,13 @@
             return null;
         }
 
-        localStorage.setItem('userName', name);
-        localStorage.setItem('userId', id);
-        localStorage.setItem('userAddress', address);
-        localStorage.setItem('userPhone', rawPhone);
-        localStorage.setItem('residentType', residentType);
+        try {
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userId', id);
+            localStorage.setItem('userAddress', address);
+            localStorage.setItem('userPhone', rawPhone);
+            localStorage.setItem('residentType', residentType);
+        } catch(e) {}
 
         const subjects = [
             "בקשה דחופה להפעלת תחבורה ציבורית ברחובות אילפא ורב ייבא סבא, בית שמש",
@@ -620,14 +630,14 @@
                 "לכבוד הרשות הארצית לתחבורה ציבורית.\n\nהעוול התכנוני ברחובות אילפא ורב ייבא סבא כפול ומכופל: גם מרחקי הליכה של למעלה מ-500 מטרים בעליות לתחנת קו 26, וגם העדר חנויות קרובות שמחייב אותנו לצאת מהשכונה כל יום. אי אפשר לכלוא כך משפחות! אנו דורשים לנצל את תשתיות ההסתובבות שבנינו ולהכניס אלינו קווי אוטובוס.",
                 "לכבוד משרד התחבורה.\n\nאיננו יכולים לקבל את מכתבי הדחייה שלכם שמפנים אותנו לקו 26. המרחק אל קו זה מאילפא ורב ייבא סבא הוא מעל 500 מטרים של שיפועים חדים - חומת בטון עבורנו שחורגת מהתקן המותר. הפתרון קיים - יש תשתיות מוכנות בקצה הרחובות שממתינות לקווי תחבורה. אשרו אותם לאלתר.",
                 "לפניות הציבור.\n\nאנו תושבי רחובות אילפא ורב ייבא סבא סובלים מניתוק יומיומי. לא ניתן להסתמך על קו 26 כשהמרחק אליו הוא מעל חצי קילומטר והגישה כה קשה. חסכו מאיתנו את המסעות הללו והשמישו את רחבות האוטובוסים שכבר סלולות ברחובותינו למען ציבור התושבים.",
-                "לכבוד משרד התחבורה והרשות הארצית לתחבורה ציבורית.\n\nשליחת תושבים לקו 26 היא התעלמות בוטה מכך שהמרחק עולה על 500 מטרים של עליות מפרכות. הקושי הפיזי הזה הופך למסוכן כשאדם חולה נזקק להגיע למרפאת 'מאוחדת' הממוקמת באילפא 3. כיצד תצפו מחולה לצלוח מרחק כה עצום בעלייה? מרפאה בת 3 קומות מחייבת קו אוטובוס שייכנס לכיכרות ההסתובבות ברחוב.",
-                "לפניות הציבור.\n\nההפניה שלכם לקו 26 מפקירה את החולים והקשישים המתגוררים או מבקרים ברחובות אילפא ורב ייבא סבא. העליות החדות ומרחק של למעלה מ-500 מטרים בדרך לתחנה מונעים גישה סבירה למרפאת 'מאוחדת' באילפא 3. מי שמרגיש ברע לא יכול לטפס הרים כדי להגיע לרופא. אנו דורשים קווי תחבורה שיפתרו את הניתוק.",
-                "לכבוד משרד התחבורה.\n\nאיננו מבקשים לעכב את קו 26, אלא קוראים להפעלת קו אוטובוס פנימי ונפרד לרחובות אילפא ורב ייבא סבא! המרחק לקו 26 כיום הוא למעלה מחצי קילומטר. תושבים חולים נמנעים מלהגיע למרפאה המרכזית של 'מאוחדת' באילפא 3 בגלל המאמץ הפיזי האדיר שדורש המרחק. נצלו את תשתיות ההסתובבות הקיימות וספקו שירות אנושי למטופלים.",
-                "לכבוד הרשות הארצית לתחבורה ציבורית.\n\nאי אפשר להסתתר מאחורי התירוץ של קו 26 כאשר המרחק אל רחובות אילפא ורב ייבא סבא עולה על 500 מטר וכולל עליות בלתי אפשריות. מצב זה שחורג מנהלי המשרד חוסם בפועל את הגישה למרפאת 'מאוחדת' ברחוב. הכניסו קווי אוטובוס לתוך רחבות ההסתובבות המוכנות והבטיחו שלכל תושב תהיה גישה לרופא.",
-                "לפניות הציבור, משרד התחבורה.\n\nאנו חיים בסיוט תחבורתי ברחובות אילפא ורב ייבא סבא. מעבר להעדר המסחר בשכונה, הקושי הגדול הוא להגיע למרפאת 'מאוחדת' באילפא 3 כאשר כל יציאה לתחנה היא למרחק של מעל 500 מטרים ודורשת טיפוס הרים. זה כשל חמור שפוגע בבריאות התושבים. הפעילו מיד פתרון תחבורתי שיגיע פנימה לתוך הרחוב.",
-                "לכבוד משרד התחבורה.\n\nמרחק ההליכה לקו 26 הוא מעל 500 מטרים ומורכב משיפועים חדים שלא מאפשרים להורים עם ילדים חולים לגשת למרפאת 'מאוחדת' ברחוב אילפא 3 או להגיע בקלות לרחוב רב ייבא סבא. מניעת תחבורה למרחק כזה ממוסד רפואי היא אבסורד, בפרט כשרחבות ההסתובבות כבר מוכנות. אשרו מיד את כניסת התחבורה.",
-                "לפניות הציבור.\n\nהניתוק ברחובות אילפא ורב ייבא סבא הופך קריטי כשמדובר באנשים חלשים וחולים שאין להם איך להגיע למרפאת 'מאוחדת'. המרחק שעולה על 500 מטרים לתחנת קו 26 הופך את הנסיעה לבלתי אפשרית. הגיע הזמן להפעיל את כיכרות ההסתובבות שברחובות שלנו ולסיים את הסבל.",
-                "לכבוד הרשות הארצית לתחבורה ציבורית.\n\nבזמן שאתם מסרבים לתת תחבורה לרחובות אילפא ורב ייבא סבא כדי לא 'לעכב נוסעים', התושבים שלנו סובלים ממרחק הליכה בלתי סביר של למעלה מ-500 מטר. הקושי לטפס את העליות אל קו 26 חוסם גישה למרפאת מאוחדת באילפא 3. עליכם למצוא פתרון חלופי (קו אוטובוס פנימי) שלא יפגע באף אחד וישרת אותנו נאמנה."
+                "לכבוד משרד התחבורה והרשות הארצית לתחבורה ציבורית.\n\nשליחת תושבים לקו 26 היא התעלמות בוטה מכך שהמרחק עולה על 500 מטרים של עליות מפרכות. הקושי הפיזי הזה הופך למסוכן כשאדם חולה נזקק להגיע למרפאת 'מאוחדת' הממוקמת באילפא 3. כיצד תצפו מחולה לצלוח מרחק כה עצום בעלייה? מרפאה בת 3 קומות מחייבת קו אוטובוס שייכנס לכיכרות ההסתובבות בהמשך הרחוב.",
+                "לפניות הציבור.\n\nההפניה שלכם לקו 26 מפקירה את החולים והקשישים המתגוררים או מבקרים ברחובות אילפא ורב ייבא סבא. העליות החדות ומרחק של למעלה מ-400 מטרים בדרך מהתחנה למרפאת 'מאוחדת' באילפא 3 מונעים גישה סבירה למטופלים. מי שמרגיש ברע לא יכול לטפס הרים כדי להגיע לרופא. אנו דורשים קווי תחבורה שיפתרו את הניתוק.",
+                "לכבוד משרד התחבורה.\n\nאיננו מבקשים לעכב את קו 26, אלא קוראים להפעלת קו אוטובוס פנימי ונפרד לרחובות אילפא ורב ייבא סבא! המרחק לקו 26 כיום הוא למעלה מחצי קילומטר לבתים ולמעלה מ-400 מטרים למרפאה. תושבים חולים נמנעים מלהגיע למרפאה המרכזית של 'מאוחדת' בגלל המאמץ הפיזי האדיר. נצלו את תשתיות ההסתובבות הקיימות וספקו שירות אנושי.",
+                "לכבוד הרשות הארצית לתחבורה ציבורית.\n\nאי אפשר להסתתר מאחורי התירוץ של קו 26 כאשר המרחק אל רחובות אילפא ורב ייבא סבא עולה על 500 מטר וכולל עליות בלתי אפשריות. מצב זה שחורג מנהלי המשרד חוסם בפועל גם את הגישה למרפאת 'מאוחדת' המרוחקת מאות מטרים מהתחנה. הכניסו קווי אוטובוס לתוך רחבות ההסתובבות המוכנות והבטיחו נגישות.",
+                "לפניות הציבור, משרד התחבורה.\n\nאנו חיים בסיוט תחבורתי ברחובות אילפא ורב ייבא סבא. מעבר להעדר המסחר בשכונה, הקושי הגדול הוא להגיע למרפאת 'מאוחדת' באילפא 3 כאשר הדרך לתחנה עולה על 400 מטרים של עליות. זה כשל חמור שפוגע בבריאות התושבים. הפעילו מיד פתרון תחבורתי שיגיע פנימה לתוך הרחוב.",
+                "לכבוד משרד התחבורה.\n\nמרחק ההליכה לקו 26 הוא מעל 500 מטרים לתושבים ומורכב משיפועים חדים שלא מאפשרים להורים עם ילדים חולים לגשת למרפאת 'מאוחדת' באילפא 3. מניעת תחבורה והליכה של כ-400 מטר אל מוסד רפואי היא אבסורד, בפרט כשרחבות ההסתובבות בהמשך הרחוב מוכנות. אשרו מיד את כניסת התחבורה.",
+                "לפניות הציבור.\n\nהניתוק ברחובות אילפא ורב ייבא סבא הופך קריטי כשמדובר באנשים חלשים וחולים שאין להם איך להגיע למרפאת 'מאוחדת'. המרחק של מאות מטרים בעליות קשות הופך את הנסיעה לבלתי אפשרית. הגיע הזמן להפעיל את כיכרות ההסתובבות שברחובות שלנו ולסיים את הסבל.",
+                "לכבוד הרשות הארצית לתחבורה ציבורית.\n\nבזמן שאתם מסרבים לתת תחבורה לרחובות אילפא ורב ייבא סבא כדי לא 'לעכב נוסעים', התושבים סובלים ממרחק הליכה של למעלה מ-500 מטר. הקושי לטפס את העליות חוסם גישה נאותה גם למרפאת מאוחדת המרוחקת כ-400 מטר מהתחנה. עליכם למצוא פתרון חלופי שלא יפגע באף אחד וישרת אותנו נאמנה."
             ];
         } else {
             templates = [
@@ -635,5 +645,128 @@
                 "לפניות הציבור, משרד התחבורה.\n\nאני פונה אליכם כתומך במאבק. ההצדקה שלכם שאין להאריך את קו 26 אינה פוטרת אתכם ממתן חלופה לרחובות אילפא ורב ייבא סבא. כיום, ההגעה לשכונה ממרחק של למעלה מ-500 מטרים דורשת מאמץ גופני רב עקב העליות. זה עונש לשכונה נטולת מסחר. אשרו כניסת אוטובוסים כדי שנוכל לבקר את משפחותינו באופן סביר.",
                 "לכבוד הרשות הארצית לתחבורה ציבורית.\n\nהמענה התחבורתי המוצע (קו 26) לרחובות אילפא ורב ייבא סבא אינו מתקבל על הדעת בגלל מרחק הליכה העולה על חצי קילומטר והעליות החדות. השכונה חייבת יציאה לקניות ותחבורה מסודרת. אני מצטרף לבקשת התושבים לאשר קווי תחבורה שייכנסו עד לרחבות האוטובוסים המוכנות. השירות חייב להיות נגיש לכל.",
                 "לכבוד משרד התחבורה.\n\nאני תושב שכונה סמוכה ורואה את מצוקתם של תושבי אילפא ורב ייבא סבא. אי אפשר לקבל את התירוץ של קו 26 כשהמרחק לשם הוא מעל 500 מטרים והעליות כה מפרכות. מן הראוי שתאשרו הפעלת קווי תחבורה פנימיים שישתמשו בתשתיות ההסתובבות הריקות ויחסכו לתושבים ולמבקרים את המסע הקשה.",
-                "לכבוד משרד התחבורה.\n\nכתושב העיר הנזקק להגיע למרפאת 'מאוחדת' באילפא 3, ההפניה אל קו 26 אינה הגיונית. מדובר במרחק של מעל 500 מטרים ועליות מפרכות. חולים אינם אמורים לעבור מבחני כושר גופני בדרך לאילפא ורב ייבא סבא! אם קו 26 לא יכול להתארך, דאגו לקו אוטובוס חלופי שינצל את רחבות ההסתובבות באזור.",
-                "לפניות הציבור.\n\nהתגובה שלכם המציגה את קו 26 כפתרון מתעלמת ממרחק של מעל חצי קילומטר והעליות המתישות אל רחובות אילפא
+                "לכבוד משרד התחבורה.\n\nכתושב העיר הנזקק להגיע למרפאת 'מאוחדת' באילפא 3, ההפניה אל קו 26 אינה הגיונית. מדובר במרחק של כ-400 מטרים ועליות מפרכות עד למרפאה. חולים אינם אמורים לעבור מבחני כושר גופני בדרך לקבלת טיפול! אם קו 26 לא יכול להתארך, דאגו לקו אוטובוס חלופי שינצל את רחבות ההסתובבות באזור.",
+                "לפניות הציבור.\n\nהתגובה שלכם המציגה את קו 26 כפתרון מתעלמת מהמרחקים הגדולים והעליות המתישות אל רחובות אילפא ורב ייבא סבא. כמבקר שנזקק למרכז הרפואי 'מאוחדת' באילפא 3, אני מוצא את עצמי מתקשה פיזית לצעוד כ-400 מטר כדי להגיע לרופא. חולים זקוקים לקו תחבורה שייכנס עד לכיכרות ההסתובבות ברחובות אלו. ספקו פתרון חלופי ומיידי.",
+                "לכבוד הרשות הארצית לתחבורה ציבורית.\n\nהניתוק של רחובות אילפא ורב ייבא סבא פוגע בכל תושבי בית שמש הזקוקים למרפאה באילפא 3. אינכם רוצים להאריך את קו 26? מצוין, הפעילו קו אוטובוס חלופי שייתן מענה אנושי לתשתיות הריקות הממתינות שם, כדי שלא ניאלץ לצעוד מאות מטרים ולטפס עליות כשאנו חולים.",
+                "לכבוד משרד התחבורה.\n\nאני פונה כתומך כדי להבהיר שהניסיון להציג את קו 26 כפתרון לאילפא ורב ייבא סבא אינו מתקבל על הדעת. העליות בדרך מונעות מהרבה חולים להגיע למרפאת 'מאוחדת' המרוחקת מאות מטרים מהתחנה. אני דורש מכם לאשר קווי תחבורה פנימיים שינגישו את הרחובות ואת מוסדות הרפואה בבטחה."
+            ];
+        }
+
+        const randomSubjectIndex = Math.floor(Math.random() * subjects.length);
+        const randomTemplateIndex = Math.floor(Math.random() * templates.length);
+        
+        const today = new Date();
+        const dateString = today.getDate() + "." + (today.getMonth() + 1);
+        const selectedSubject = subjects[randomSubjectIndex] + " (" + dateString + ")";
+        
+        const selectedTemplate = templates[randomTemplateIndex];
+        const personalSignature = "\n\nבברכה,\n" + name + "\nת.ז: " + id + "\nכתובת: " + address + "\nטלפון: " + phone;
+        
+        return {
+            email: "pniotcrm@mot.gov.il",
+            subject: selectedSubject,
+            body: selectedTemplate + personalSignature
+        };
+    }
+
+    function processEmail(action) {
+        const content = generateContent();
+        if (!content) return; 
+
+        let popupShown = false;
+
+        if (action === 'open') {
+            gtag('event', 'send_email_clicked', { 'event_category': 'Buttons', 'event_label': 'Green Send Button' });
+            
+            const warningEl = document.getElementById('emailFallbackWarning');
+            if (warningEl) {
+                warningEl.style.display = 'block';
+            }
+            
+            const mailtoLink = "mailto:" + content.email + 
+                               "?subject=" + encodeURIComponent(content.subject) + 
+                               "&body=" + encodeURIComponent(content.body);
+            window.location.href = mailtoLink;
+            popupShown = true;
+            
+        } else if (action === 'gmail_web') {
+            gtag('event', 'send_gmail_web_clicked', { 'event_category': 'Buttons', 'event_label': 'Red Gmail Web Button' });
+            
+            const gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=" + content.email + 
+                              "&su=" + encodeURIComponent(content.subject) + 
+                              "&body=" + encodeURIComponent(content.body);
+            window.open(gmailLink, '_blank');
+            popupShown = true;
+
+        } else if (action === 'copy') {
+            gtag('event', 'copy_text_clicked', { 'event_category': 'Buttons', 'event_label': 'Gray Copy Button' });
+
+            var textArea = document.createElement("textarea");
+            textArea.value = content.body;
+            textArea.style.position = "fixed";
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.opacity = "0";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                if (successful) {
+                    var manualSection = document.getElementById('manualCopySection');
+                    manualSection.style.display = 'block';
+                    document.getElementById('copySubjectField').value = content.subject;
+                    document.getElementById('copyBodyField').value = content.body;
+                    
+                    manualSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    popupShown = true;
+                } else {
+                    alert("אירעה שגיאה בהעתקה, אנא נסו שוב.");
+                }
+            } catch (err) {
+                alert("אירעה שגיאה בהעתקה. המכשיר חוסם פעולה זו.");
+            }
+            document.body.removeChild(textArea);
+        }
+
+        if (popupShown) {
+            setTimeout(showPopup, 1000); 
+        }
+    }
+
+    function copySpecificField(elementId) {
+        var copyText = document.getElementById(elementId);
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+
+        try {
+            document.execCommand("copy");
+            alert("הועתק בהצלחה!");
+        } catch (err) {
+            alert("שגיאה בהעתקה.");
+        }
+    }
+
+    function shareSiteViaEmail() {
+        gtag('event', 'share_site_clicked', { 'event_category': 'Buttons', 'event_label': 'Blue Share Button' });
+
+        const siteUrl = "https://ilfa-bus.github.io/";
+        const subject = "הצטרפו למאבק על התחבורה באילפא ורב ייבא סבא!";
+        const body = "שכנים יקרים,\n\nהוקם אתר חדש ומהיר שמאפשר לשלוח פנייה רשמית למשרד התחבורה בקליק אחד, כדי לדרוש תחבורה ציבורית לרחובות שלנו.\n\nאנא כנסו לקישור, שלחו פנייה אחת ביום, ושתפו הלאה:\n" + siteUrl;
+        
+        const gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&su=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        window.open(gmailLink, '_blank');
+    }
+
+    function shareSiteViaWhatsApp() {
+        gtag('event', 'share_whatsapp_clicked', { 'event_category': 'Buttons', 'event_label': 'WhatsApp Share Button' });
+
+        const text = "שכנים יקרים, הצטרפו למאבק על התחבורה באילפא ורב ייבא סבא!\n\nהוקם אתר חדש ומהיר שמאפשר לשלוח פנייה רשמית למשרד התחבורה בקליק אחד.\n\nאנא כנסו לקישור, שלחו פנייה אחת ביום, ושתפו הלאה בקבוצות של השכונה:\nhttps://ilfa-bus.github.io/";
+        const waLink = "https://wa.me/?text=" + encodeURIComponent(text);
+        window.open(waLink, '_blank');
+    }
+</script>
+
+</body>
+</html>
