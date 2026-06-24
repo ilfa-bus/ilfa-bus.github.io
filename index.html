@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C1CPQND8VB"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,9 +14,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- הגדרות SEO מקומי למנועי חיפוש -->
     <meta name="description" content="הצטרפו למאבק התחבורה של תושבי רמת בית שמש ד' 4. שלחו פנייה מהירה למשרד התחבורה בדרישה להפעלת קווי אוטובוס וחלופה לקו 26 ברחובות אילפא ורב ייבא סבא.">
     <meta name="keywords" content="תחבורה ציבורית, בית שמש, רמה ד 4, רמב''ש ד, אילפא, רב ייבא סבא, קו 26, משרד התחבורה, תלונות ציבור, אוטובוסים, תחנות אוטובוס">
     
+    <!-- תגיות מטא לשיתוף -->
     <meta property="og:title" content="דורשים תחבורה ציבורית לאילפא ורב ייבא סבא!" />
     <meta property="og:description" content="היכנסו עכשיו ושלחו פנייה רשמית למשרד התחבורה בקליק אחד. לוקח 10 שניות ויכול לשנות לנו את המציאות בשכונה!" />
     <meta property="og:image" content="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1000&auto=format&fit=crop" />
@@ -411,7 +414,7 @@
     <div class="bsd">בס"ד</div>
     
     <h1>טופס פנייה רשמי למשרד התחבורה - אילפא ורב ייבא סבא</h1>
-    <p class="subtitle">דורשים תחבורה ציבורית לרחובות אילפא ורב ייבא סבא (ד' 4)!</p>
+    <p class="subtitle">דורשים תחבורה פנימית לאילפא ורב ייבא סבא (ד' 4)!</p>
     
     <div class="progress-section">
         <div class="progress-title">🎯 יעד המאבק: 2,000 פניות! עזרו לנו להגיע אליו.</div>
@@ -483,7 +486,7 @@
     <button class="btn" onclick="processEmail('open')">📲 לחצו לפתיחת המייל באפליקציה (למשתמשי טלפון)</button>
     
     <div id="emailFallbackWarning" style="display: none; color: #e53e3e; font-weight: bold; margin-bottom: 15px; background-color: #fed7d7; padding: 12px; border-radius: 8px;">
-        ⏳ מנסה לפתוח את המייל... <br>אם לא נפתחה הודעה חדשה כעת, אנא לחצו על הכפתור האפור למטה להעתקה ידנית.
+        ⏳ מנסה לפתוח את חלונית המייל... <br>אם לא נפתחה לכם הודעה חדשה כעת (ייתכן והדפדפן חוסם זאת), אנא לחצו על הכפתור האפור למטה להעתקה ידנית.
     </div>
 
     <button class="btn btn-secondary" onclick="processEmail('copy')">האפשרויות למעלה לא עבדו? לחצו להעתקה ושליחה ידנית</button>
@@ -690,6 +693,11 @@
         } else if (action === 'gmail_web') {
             gtag('event', 'send_gmail_web_clicked', { 'event_category': 'Buttons', 'event_label': 'Red Gmail Web Button' });
             
+            const warningEl = document.getElementById('emailFallbackWarning');
+            if (warningEl) {
+                warningEl.style.display = 'block';
+            }
+            
             const gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=" + content.email + 
                               "&su=" + encodeURIComponent(content.subject) + 
                               "&body=" + encodeURIComponent(content.body);
@@ -718,7 +726,7 @@
                     document.getElementById('copyBodyField').value = content.body;
                     
                     manualSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // פופאפ תודה לא יקפוץ כאן כדי לא לבלבל את המשתמש
+                    // הפופאפ תודה לא קופץ כאן כדי שהמשתמש לא יחשוב שסיים לפני ששלח בפועל
                 } else {
                     alert("אירעה שגיאה בהעתקה, אנא נסו שוב.");
                 }
