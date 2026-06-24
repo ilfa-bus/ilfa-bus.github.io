@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C1CPQND8VB"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,12 +13,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- הגדרות SEO מקומי למנועי חיפוש -->
     <meta name="description" content="הצטרפו למאבק התחבורה של תושבי רמת בית שמש ד' 4. שלחו פנייה מהירה למשרד התחבורה בדרישה להפעלת קווי אוטובוס וחלופה לקו 26 ברחובות אילפא ורב ייבא סבא.">
     <meta name="keywords" content="תחבורה ציבורית, בית שמש, רמה ד 4, רמב''ש ד, אילפא, רב ייבא סבא, קו 26, משרד התחבורה, תלונות ציבור, אוטובוסים, תחנות אוטובוס">
     
-    <!-- תגיות מטא לשיתוף -->
-    <meta property="og:title" content="דורשים תחבורה ציבורית לאילפא ורב ייבא סבא!" />
+    <meta property="og:title" content="דורשים תחבורה ציבורית לרחובות אילפא ורב ייבא סבא (ד' 4)!" />
     <meta property="og:description" content="היכנסו עכשיו ושלחו פנייה רשמית למשרד התחבורה בקליק אחד. לוקח 10 שניות ויכול לשנות לנו את המציאות בשכונה!" />
     <meta property="og:image" content="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1000&auto=format&fit=crop" />
     <meta property="og:url" content="https://ilfa-bus.github.io/" />
@@ -403,7 +400,8 @@
         <h2>תודה רבה על השליחה! 🚌</h2>
         <p>הפנייה שלך נרשמה והיא עוד צעד קריטי למען התושבים.</p>
         <p style="font-weight: bold; color: var(--secondary-blue); margin-bottom: 5px; font-size: 16px;">💡 נקודה למחשבה על המאבק שלנו:</p>
-        <div id="messageContainer" class="popup-message"></div>
+        <div id="messageContainer" class="popup-message">
+            </div>
         <p style="font-size: 14px; color: var(--text-muted);">ההתמדה מנצחת. אנא חזרו גם מחר לשלוח פנייה נוספת למשרד התחבורה.</p>
         <button class="popup-btn" onclick="closePopup()">סגור והמשך</button>
     </div>
@@ -720,7 +718,7 @@
                     document.getElementById('copyBodyField').value = content.body;
                     
                     manualSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    popupShown = true;
+                    // פופאפ תודה לא יקפוץ כאן כדי לא לבלבל את המשתמש
                 } else {
                     alert("אירעה שגיאה בהעתקה, אנא נסו שוב.");
                 }
