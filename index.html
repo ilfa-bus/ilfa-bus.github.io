@@ -213,7 +213,7 @@
         }
 
         /* כפתורים משודרגים */
-        .btn, .btn-gmail, .btn-secondary, .btn-share, .btn-whatsapp, .btn-download {
+        .btn, .btn-gmail, .btn-secondary, .btn-share, .btn-whatsapp, .btn-download, .btn-subscribe {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -269,12 +269,23 @@
             background-color: #128C7E;
         }
         .btn-download {
-            background-color: #f39c12; /* צבע כתום בולט */
+            background-color: #f39c12; 
             color: #fff;
             margin-top: 20px;
         }
         .btn-download:hover {
             background-color: #e67e22;
+        }
+        .btn-subscribe {
+            background-color: #8e44ad; /* צבע סגול בולט */
+            box-shadow: 0 4px 6px rgba(142, 68, 173, 0.2);
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+        .btn-subscribe:hover {
+            background-color: #9b59b6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(142, 68, 173, 0.3);
         }
         
         hr {
@@ -499,11 +510,6 @@
 
     <button class="btn btn-secondary" onclick="processEmail('copy')">האפשרויות למעלה לא עבדו? לחצו להעתקה ושליחה ידנית</button>
 
-    <hr>
-    
-    <button class="btn-share" onclick="shareSiteViaEmail()">✉️ שתפו את האתר במייל (ממחשב)</button>
-    <button class="btn-whatsapp" onclick="shareSiteViaWhatsApp()">💬 שתפו את האתר בוואטסאפ</button>
-
     <div id="manualCopySection" class="manual-copy-box">
         <h3>הוראות להשלמת השליחה הידנית</h3>
         <p>✅ <strong>גוף ההודעה הועתק בהצלחה!</strong> פתחו את המייל שלכם והדביקו אותו בהודעה החדשה.<br><small>(אם הטקסט נמחק, ניתן להעתיקו שוב למטה)</small></p>
@@ -526,6 +532,16 @@
             <button class="copy-btn-small copy-btn-green" onclick="copySpecificField('copyBodyField')">העתק שוב את גוף ההודעה</button>
         </div>
     </div>
+
+    <hr>
+
+    <!-- כפתור הרשמה לתפוצה יומית -->
+    <a href="https://forms.gle/NUhBhRZBf2d6LK6d8" target="_blank" class="btn-subscribe" style="text-decoration: none;" onclick="gtag('event', 'subscribe_clicked', { 'event_category': 'Buttons', 'event_label': 'Subscribe Reminder Button' });">
+        🔔 לחצו כאן להצטרפות לתזכורת יומית במייל (בלי חפירות!)
+    </a>
+    
+    <button class="btn-share" onclick="shareSiteViaEmail()">✉️ שתפו את האתר במייל (ממחשב)</button>
+    <button class="btn-whatsapp" onclick="shareSiteViaWhatsApp()">💬 שתפו את האתר בוואטסאפ</button>
 
     <!-- כפתור להורדת השלט להדפסה -->
     <a href="ilfa-bus-poster.pdf" download class="btn-download" style="text-decoration: none;" onclick="gtag('event', 'download_poster_clicked', { 'event_category': 'Buttons', 'event_label': 'Download Poster Button' });">
