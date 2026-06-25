@@ -213,7 +213,7 @@
         }
 
         /* כפתורים משודרגים */
-        .btn, .btn-gmail, .btn-secondary, .btn-share, .btn-whatsapp {
+        .btn, .btn-gmail, .btn-secondary, .btn-share, .btn-whatsapp, .btn-download {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -267,6 +267,14 @@
         }
         .btn-whatsapp:hover {
             background-color: #128C7E;
+        }
+        .btn-download {
+            background-color: #f39c12; /* צבע כתום בולט */
+            color: #fff;
+            margin-top: 20px;
+        }
+        .btn-download:hover {
+            background-color: #e67e22;
         }
         
         hr {
@@ -518,6 +526,11 @@
             <button class="copy-btn-small copy-btn-green" onclick="copySpecificField('copyBodyField')">העתק שוב את גוף ההודעה</button>
         </div>
     </div>
+
+    <!-- כפתור להורדת השלט להדפסה -->
+    <a href="ilfa-bus-poster.pdf" download class="btn-download" style="text-decoration: none;" onclick="gtag('event', 'download_poster_clicked', { 'event_category': 'Buttons', 'event_label': 'Download Poster Button' });">
+        🖨️ לחצו כאן להורדת מודעה להדפסה ותלייה בבניין שלכם
+    </a>
 
     <div class="seo-text">
         <strong>מידע אודות יוזמת התושבים:</strong> אתר זה הוקם ומופעל על ידי תושבי רמת בית שמש ד' 4 (רמב"ש ד) במטרה להשמיע את קולנו במאבק לשיפור התחבורה הציבורית בשכונה. אנו מתמודדים עם מרחקי הליכה של למעלה מ-500 מטרים לתחנות קו 26, חריגה בוטה מן התקן, ודורשים פתרון הולם מהרשות הארצית לתחבורה ציבורית. קריאתנו היא להכניס קווי אוטובוס אל תוך כיכרות ההסתובבות המוסדרות בהמשך רחובות אילפא ורב ייבא סבא. על מנת לספק נגישות סבירה למשפחות בעיר בית שמש אנו דורשים תחבורה זמינה כעת.
