@@ -147,7 +147,7 @@
             border: 1px solid #e2e8f0;
         }
         
-        /* שדות הזנה משודרגים */
+        /* שדות הזנה */
         .form-group {
             margin-bottom: 18px;
             text-align: right;
@@ -173,7 +173,7 @@
         }
         input[type="text"], input[type="tel"] {
             width: 100%;
-            padding: 12px 40px 12px 12px; /* מקום לאייקון מימין */
+            padding: 12px 40px 12px 12px;
             border: 2px solid #cbd5e0;
             border-radius: 8px;
             box-sizing: border-box;
@@ -212,8 +212,25 @@
             cursor: pointer;
         }
 
-        /* כפתורים משודרגים */
-        .btn, .btn-gmail, .btn-secondary, .btn-share, .btn-whatsapp, .btn-download, .btn-subscribe {
+        /* עיצוב משודרג להיררכיית אזורי כפתורים */
+        .button-section {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+        }
+        .section-title {
+            color: var(--primary-blue);
+            font-size: 16px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        /* כפתורים כלליים */
+        .btn {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -230,11 +247,13 @@
             font-weight: bold;
             transition: all 0.2s ease;
         }
-        .btn {
+        
+        /* שלב 1: כפתורים ראשיים (שליחה) */
+        .btn-green {
             background-color: var(--action-green);
             box-shadow: 0 4px 6px rgba(39, 174, 96, 0.2);
         }
-        .btn:hover {
+        .btn-green:hover {
             background-color: var(--action-green-hover);
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(39, 174, 96, 0.3);
@@ -252,47 +271,52 @@
             background-color: #718096;
             padding: 14px;
             font-size: 15px;
+            margin-bottom: 0;
         }
         .btn-secondary:hover {
             background-color: #4a5568;
         }
-        .btn-share {
-            background-color: var(--secondary-blue);
-        }
-        .btn-share:hover {
-            background-color: #2980b9;
-        }
-        .btn-whatsapp {
-            background-color: #25D366;
-        }
-        .btn-whatsapp:hover {
-            background-color: #128C7E;
-        }
-        .btn-download {
-            background-color: #f39c12; 
-            color: #fff;
-            margin-top: 20px;
-        }
-        .btn-download:hover {
-            background-color: #e67e22;
-        }
+
+        /* שלב 2: כפתור הרשמה */
         .btn-subscribe {
-            background-color: #8e44ad; /* צבע סגול בולט */
+            background-color: #8e44ad;
             box-shadow: 0 4px 6px rgba(142, 68, 173, 0.2);
-            margin-top: 5px;
-            margin-bottom: 20px;
+            margin-bottom: 0;
         }
         .btn-subscribe:hover {
             background-color: #9b59b6;
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(142, 68, 173, 0.3);
         }
-        
-        hr {
-            border: 0;
-            height: 1px;
-            background: #e2e8f0;
-            margin: 30px 0;
+
+        /* שלב 3: כפתורים משניים משודרגים (Outline) */
+        .btn-outline-blue {
+            background-color: transparent;
+            border: 2px solid var(--secondary-blue);
+            color: var(--secondary-blue);
+        }
+        .btn-outline-blue:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            transform: translateY(-2px);
+        }
+        .btn-outline-green {
+            background-color: transparent;
+            border: 2px solid #25D366;
+            color: #128C7E;
+        }
+        .btn-outline-green:hover {
+            background-color: rgba(37, 211, 102, 0.1);
+            transform: translateY(-2px);
+        }
+        .btn-outline-orange {
+            background-color: transparent;
+            border: 2px solid #e67e22;
+            color: #d35400;
+            margin-bottom: 0;
+        }
+        .btn-outline-orange:hover {
+            background-color: rgba(230, 126, 34, 0.1);
+            transform: translateY(-2px);
         }
         
         /* קופסת העתקה ידנית */
@@ -302,7 +326,7 @@
             border: 2px solid var(--secondary-blue);
             padding: 20px;
             border-radius: 8px;
-            margin-top: 20px;
+            margin-bottom: 20px;
             text-align: right;
         }
         .manual-copy-box h3 {
@@ -408,7 +432,7 @@
             font-size: 11px;
             color: #a0aec0;
             text-align: right;
-            margin-top: 35px;
+            margin-top: 20px;
             border-top: 1px solid #e2e8f0;
             padding-top: 15px;
             line-height: 1.5;
@@ -501,15 +525,24 @@
         </div>
     </div>
 
-    <button class="btn-gmail" onclick="processEmail('gmail_web')">✉️ שליחה דרך ג'ימייל (למשתמשי מחשב)</button>
-    <button class="btn" onclick="processEmail('open')">📲 לחצו לפתיחת המייל באפליקציה (למשתמשי טלפון)</button>
-    
-    <div id="emailFallbackWarning" style="display: none; color: #e53e3e; font-weight: bold; margin-bottom: 15px; background-color: #fed7d7; padding: 12px; border-radius: 8px;">
-        ⏳ מנסה לפתוח את חלונית המייל... <br>אם לא נפתחה לכם הודעה חדשה כעת (ייתכן והדפדפן חוסם זאת), אנא לחצו על הכפתור האפור למטה להעתקה ידנית.
+    <!-- ============================================ -->
+    <!-- סידור מחדש של הכפתורים ב-3 שלבים ברורים -->
+    <!-- ============================================ -->
+
+    <!-- קבוצה 1: פעולה עיקרית -->
+    <div class="button-section">
+        <h3 class="section-title">שלב 1: שליחת הפנייה היומית</h3>
+        <button class="btn btn-gmail" onclick="processEmail('gmail_web')">✉️ שליחה מהירה דרך ג'ימייל (מומלץ למחשב)</button>
+        <button class="btn btn-green" onclick="processEmail('open')">📲 שליחה מהירה דרך אפליקציית המייל בטלפון</button>
+        
+        <div id="emailFallbackWarning" style="display: none; color: #e53e3e; font-weight: bold; margin-bottom: 15px; background-color: #fed7d7; padding: 12px; border-radius: 8px;">
+            ⏳ מנסה לפתוח את חלונית המייל... <br>אם לא נפתחה לכם הודעה חדשה כעת (ייתכן והדפדפן חוסם זאת), אנא לחצו על הכפתור האפור למטה להעתקה ידנית.
+        </div>
+        
+        <button class="btn btn-secondary" onclick="processEmail('copy')">העתקה ושליחה ידנית (למקרים מיוחדים)</button>
     </div>
 
-    <button class="btn btn-secondary" onclick="processEmail('copy')">האפשרויות למעלה לא עבדו? לחצו להעתקה ושליחה ידנית</button>
-
+    <!-- תיבת העתקה ידנית - מוסתרת כברירת מחדל ותופיע רק בלחיצה -->
     <div id="manualCopySection" class="manual-copy-box">
         <h3>הוראות להשלמת השליחה הידנית</h3>
         <p>✅ <strong>גוף ההודעה הועתק בהצלחה!</strong> פתחו את המייל שלכם והדביקו אותו בהודעה החדשה.<br><small>(אם הטקסט נמחק, ניתן להעתיקו שוב למטה)</small></p>
@@ -533,20 +566,25 @@
         </div>
     </div>
 
-    <hr>
+    <!-- קבוצה 2: הצטרפות ועדכון -->
+    <div class="button-section">
+        <h3 class="section-title">שלב 2: נשארים מעודכנים</h3>
+        <a href="https://forms.gle/NUhBhRZBf2d6LK6d8" target="_blank" class="btn btn-subscribe" style="text-decoration: none;" onclick="gtag('event', 'subscribe_clicked', { 'event_category': 'Buttons', 'event_label': 'Subscribe Reminder Button' });">
+            🔔 לחצו כאן להרשמה לתזכורת יומית במייל (בלי חפירות!)
+        </a>
+    </div>
 
-    <!-- כפתור הרשמה לתפוצה יומית -->
-    <a href="https://forms.gle/NUhBhRZBf2d6LK6d8" target="_blank" class="btn-subscribe" style="text-decoration: none;" onclick="gtag('event', 'subscribe_clicked', { 'event_category': 'Buttons', 'event_label': 'Subscribe Reminder Button' });">
-        🔔 לחצו כאן להצטרפות לתזכורת יומית במייל (בלי חפירות!)
-    </a>
-    
-    <button class="btn-share" onclick="shareSiteViaEmail()">✉️ שתפו את האתר במייל (ממחשב)</button>
-    <button class="btn-whatsapp" onclick="shareSiteViaWhatsApp()">💬 שתפו את האתר בוואטסאפ</button>
-
-    <!-- כפתור להורדת השלט להדפסה -->
-    <a href="ilfa-bus-poster.pdf" download class="btn-download" style="text-decoration: none;" onclick="gtag('event', 'download_poster_clicked', { 'event_category': 'Buttons', 'event_label': 'Download Poster Button' });">
-        🖨️ לחצו כאן להורדת מודעה להדפסה ותלייה בבניין שלכם
-    </a>
+    <!-- קבוצה 3: הפצה ומשאבים -->
+    <div class="button-section" style="margin-bottom: 0;">
+        <h3 class="section-title">שלב 3: עוזרים לשכנים להצטרף</h3>
+        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+            <button class="btn btn-outline-blue" style="flex: 1; font-size: 15px; margin-bottom: 0;" onclick="shareSiteViaEmail()">✉️ שיתוף במייל</button>
+            <button class="btn btn-outline-green" style="flex: 1; font-size: 15px; margin-bottom: 0;" onclick="shareSiteViaWhatsApp()">💬 שיתוף בוואטסאפ</button>
+        </div>
+        <a href="ilfa-bus-poster.pdf" download class="btn btn-outline-orange" style="text-decoration: none; font-size: 15px; padding: 12px;" onclick="gtag('event', 'download_poster_clicked', { 'event_category': 'Buttons', 'event_label': 'Download Poster Button' });">
+            🖨️ לחצו להורדת שלט מודפס לתלייה בלובי הבניין שלכם
+        </a>
+    </div>
 
     <div class="seo-text">
         <strong>מידע אודות יוזמת התושבים:</strong> אתר זה הוקם ומופעל על ידי תושבי רמת בית שמש ד' 4 (רמב"ש ד) במטרה להשמיע את קולנו במאבק לשיפור התחבורה הציבורית בשכונה. אנו מתמודדים עם מרחקי הליכה של למעלה מ-500 מטרים לתחנות קו 26, חריגה בוטה מן התקן, ודורשים פתרון הולם מהרשות הארצית לתחבורה ציבורית. קריאתנו היא להכניס קווי אוטובוס אל תוך כיכרות ההסתובבות המוסדרות בהמשך רחובות אילפא ורב ייבא סבא. על מנת לספק נגישות סבירה למשפחות בעיר בית שמש אנו דורשים תחבורה זמינה כעת.
