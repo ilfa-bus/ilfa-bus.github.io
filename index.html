@@ -438,6 +438,33 @@
             padding-top: 15px;
             line-height: 1.5;
         }
+
+        /* אנימציית החלקה מטה לקופסת ההעתקה */
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .manual-copy-box.show-animated {
+            display: block !important;
+            animation: slideDown 0.4s ease forwards;
+        }
+
+        /* עיצוב שגיאות ולידציה (הדגשה באדום) */
+        .input-error {
+            border-color: #e53e3e !important;
+            box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.15) !important;
+        }
+        .global-error {
+            display: none;
+            background-color: #fed7d7;
+            color: #c53030;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #fc8181;
+        }
     </style>
 </head>
 <body>
@@ -533,6 +560,7 @@
     <!-- קבוצה 1: פעולה עיקרית -->
     <div class="button-section">
         <h3 class="section-title">שלב 1: שליחת הפנייה היומית</h3>
+        <div id="globalFormError" class="global-error">⚠️ אנא מלאו את כל השדות המסומנים באדום כדי להמשיך.</div>
         <button class="btn btn-gmail" onclick="processEmail('gmail_web')">✉️ שליחה מהירה דרך ג'ימייל (מומלץ למחשב)</button>
         <button class="btn btn-green" onclick="processEmail('open')">📲 שליחה מהירה דרך אפליקציית המייל בטלפון</button>
         
@@ -649,15 +677,36 @@
 
     function generateContent() {
         const residentType = document.querySelector('input[name="residentType"]:checked').value;
-        const name = document.getElementById('userName').value.trim();
-        const id = document.getElementById('userId').value.trim();
-        const address = document.getElementById('userAddress').value.trim();
-        const rawPhone = document.getElementById('userPhone').value.trim();
+        const nameEl = document.getElementById('userName');
+        const idEl = document.getElementById('userId');
+        const addressEl = document.getElementById('userAddress');
+        const phoneEl = document.getElementById('userPhone');
+        
+        const name = nameEl.value.trim();
+        const id = idEl.value.trim();
+        const address = addressEl.value.trim();
+        const rawPhone = phoneEl.value.trim();
         const phone = rawPhone.replace(/[\s-]/g, '');
 
-        if (!name || !id || !address || !phone) {
-            alert("אנא מלאו את כל הפרטים האישיים כדי שנוכל לייצר עבורכם תלונה רשמית.");
+        // מערכת ולידציה ויזואלית
+        let isValid = true;
+        const elements = [nameEl, idEl, addressEl, phoneEl];
+        
+        elements.forEach(el => {
+            if (!el.value.trim()) {
+                el.classList.add('input-error');
+                isValid = false;
+            } else {
+                el.classList.remove('input-error');
+            }
+        });
+
+        const globalError = document.getElementById('globalFormError');
+        if (!isValid) {
+            if(globalError) globalError.style.display = 'block';
             return null;
+        } else {
+            if(globalError) globalError.style.display = 'none';
         }
 
         try {
@@ -777,7 +826,7 @@
                 var successful = document.execCommand('copy');
                 if (successful) {
                     var manualSection = document.getElementById('manualCopySection');
-                    manualSection.style.display = 'block';
+                    manualSection.classList.add('show-animated');
                     document.getElementById('copySubjectField').value = content.subject;
                     document.getElementById('copyBodyField').value = content.body;
                     
