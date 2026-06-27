@@ -766,7 +766,12 @@
         const selectedSubject = subjects[randomSubjectIndex] + " (" + dateString + ")";
         
         const selectedTemplate = templates[randomTemplateIndex];
-        const personalSignature = "\n\nבברכה,\n" + name + "\nת.ז: " + id + "\nכתובת: " + address + "\nטלפון: " + phone;
+        let personalSignature = "\n\nבברכה,\n" + name + "\nת.ז: " + id + "\nכתובת: " + address;
+
+// שורת הטלפון תתווסף רק אם המשתמש הזין מספר
+if (phone !== "") {
+    personalSignature += "\nטלפון: " + phone;
+}
         
         return {
             email: "pniotcrm@mot.gov.il",
