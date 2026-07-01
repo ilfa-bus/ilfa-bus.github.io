@@ -470,6 +470,19 @@
             margin-bottom: 12px;
             text-align: right;
         }
+        
+        /* עיצוב לתיבת העדכון על העותק הנסתר */
+        .bcc-notice {
+            background-color: #ebf8ff;
+            border: 1px solid #90cdf4;
+            color: #2b6cb0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 14.5px;
+            margin-bottom: 18px;
+            text-align: right;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
@@ -560,6 +573,11 @@
 
     <div class="button-section">
         <h3 class="section-title">שלב 1: שליחת הפנייה היומית</h3>
+        
+        <div class="bcc-notice">
+            💡 <strong>לידיעתכם:</strong> כדי להפעיל לחץ מקסימלי, המערכת מוסיפה אוטומטית בעותק נסתר (BCC) גם את לשכת ראש העיר, הדרג המקצועי בעירייה ואת ועד המאבק.
+        </div>
+        
         <div id="globalFormError" class="global-error">⚠️ אנא מלאו את כל השדות המסומנים באדום כדי להמשיך.</div>
         <button class="btn btn-gmail" onclick="processEmail('gmail_web')">✉️ שליחה מהירה דרך ג'ימייל (מומלץ למחשב)</button>
         <button class="btn btn-green" onclick="processEmail('open')">📲 שליחה מהירה דרך אפליקציית המייל בטלפון</button>
@@ -623,7 +641,7 @@
     // ==============================================================
     // כאן מעדכנים את מספרי הפניות
     // ==============================================================
-    const CURRENT_SUBMISSIONS = 1006; 
+    const CURRENT_SUBMISSIONS = 930; 
     const TARGET_SUBMISSIONS = 2000; 
     // ==============================================================
 
