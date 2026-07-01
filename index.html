@@ -623,7 +623,7 @@
     // ==============================================================
     // כאן מעדכנים את מספרי הפניות
     // ==============================================================
-    const CURRENT_SUBMISSIONS = 1006; 
+    const CURRENT_SUBMISSIONS = 930; 
     const TARGET_SUBMISSIONS = 2000; 
     // ==============================================================
 
@@ -789,6 +789,9 @@
 
         let popupShown = false;
 
+        // רשימת הכתובות של בכירי עיריית בית שמש והמייל של הוועד בעותק נסתר
+        const bccList = "lishkatr@bshemesh.co.il,Dvori@Bshemesh.co.il,TB-Han@Bshemesh.co.il,ilfabus@gmail.com";
+
         if (action === 'open') {
             gtag('event', 'send_email_clicked', { 'event_category': 'Buttons', 'event_label': 'Green Send Button' });
             
@@ -798,7 +801,8 @@
             }
             
             const mailtoLink = "mailto:" + content.email + 
-                               "?subject=" + encodeURIComponent(content.subject) + 
+                               "?bcc=" + bccList +
+                               "&subject=" + encodeURIComponent(content.subject) + 
                                "&body=" + encodeURIComponent(content.body);
             window.location.href = mailtoLink;
             popupShown = true;
@@ -812,6 +816,7 @@
             }
             
             const gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=" + content.email + 
+                              "&bcc=" + bccList +
                               "&su=" + encodeURIComponent(content.subject) + 
                               "&body=" + encodeURIComponent(content.body);
             window.open(gmailLink, '_blank');
