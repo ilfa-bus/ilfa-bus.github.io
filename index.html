@@ -509,7 +509,7 @@
     <p>שכנים יקרים, אנא מלאו את פרטיכם כדי שהתלונה תהיה רשמית ותחייב מענה. המערכת תכין עבורכם נוסח מפורט, מנומק ואקראי.</p>
     
     <div class="daily-reminder">
-        🎯 אתגר אישי לשבועיים הקרובים: קחו על עצמכם לשלוח פנייה אחת בכל יום! יחד נגיע ליעד ונביא את האוטובוסים לשכונה.
+        🎯 <strong>היעד מתקרב!</strong> הגענו כבר ל-<span id="dynamicReminderCount">0</span> פניות מהשכונה. קחו על עצמכם לשלוח פנייה יומית אחת, ויחד נגיע ליעד ונחזיר את האוטובוסים אלינו!
     </div>
 
     <div class="form-group radio-box">
@@ -649,6 +649,10 @@
 
     window.onload = function() {
         document.getElementById('dynamicCurrentCount').innerText = CURRENT_SUBMISSIONS.toLocaleString('he-IL');
+        
+        // השורה החדשה שמעדכנת את המספר בתזכורת היומית:
+        document.getElementById('dynamicReminderCount').innerText = CURRENT_SUBMISSIONS.toLocaleString('he-IL');
+        
         let remaining = TARGET_SUBMISSIONS - CURRENT_SUBMISSIONS;
         document.getElementById('dynamicRemainingCount').innerText = (remaining > 0 ? remaining : 0).toLocaleString('he-IL');
         let percentage = (CURRENT_SUBMISSIONS / TARGET_SUBMISSIONS) * 100;
