@@ -516,11 +516,11 @@
         <label>היכן אתם מתגוררים?</label>
         <div class="radio-group">
             <label>
-                <input type="radio" name="residentType" value="resident" checked>
+                <input type="radio" name="residentType" value="resident" checked onchange="try{localStorage.setItem('residentType', this.value)}catch(e){}">
                 אני תושב/ת הרחובות אילפא או רב ייבא סבא
             </label>
             <label>
-                <input type="radio" name="residentType" value="supporter">
+                <input type="radio" name="residentType" value="supporter" onchange="try{localStorage.setItem('residentType', this.value)}catch(e){}">
                 אני מרחוב אחר ובאתי לתמוך במאבק
             </label>
         </div>
