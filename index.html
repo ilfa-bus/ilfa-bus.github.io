@@ -498,7 +498,7 @@
     </div>
     </div>
     
-    <p>🔥 <strong>האוטובוס כבר סייר ברחובות שלנו! הלחץ עבד!</strong> כבר נכנס אוטובוס של משרד התחבורה לסיור עבודה רשמי ברחובות אילפא ורב ייבא סבא לקראת התכנון, והקו הפנימי (לא שאטל) אושר לתחילת החורף. יחד עם זאת, <strong>אסור להרפות עכשיו!</strong> אישור הוא צעד ענק, אך ביצוע בפועל עלול לקחת זמן. המשך הפניות היומיומיות שלכם הוא הגורם המרכזי שמזרז את העניינים ומונע סחבת. המשיכו לשלוח פניות מעקב, ולא נעצור עד שהאוטובוס יתחיל לפעול באופן סדיר.</p>
+    <p>🔥 <strong>האוטובוס כבר סייר ברחובות שלנו! הלחץ עבד!</strong> אתמול נכנס אוטובוס של משרד התחבורה לסיור עבודה רשמי ברחובות אילפא ורב ייבא סבא לקראת התכנון, והקו הפנימי (לא שאטל) אושר לתחילת החורף. יחד עם זאת, <strong>אסור להרפות עכשיו!</strong> אישור הוא צעד ענק, אך ביצוע בפועל עלול לקחת זמן. המשך הפניות היומיומיות שלכם הוא הגורם המרכזי שמזרז את העניינים ומונע סחבת. המשיכו לשלוח פניות מעקב, ולא נעצור עד שהאוטובוס יתחיל לפעול באופן סדיר.</p>
     
     <div class="daily-reminder">
         🎯 <strong>שלב ב' יצא לדרך!</strong> הגענו כבר ל-<span id="dynamicReminderCount">0</span> פניות שנשלחו מהשכונה. קחו על עצמכם לשלוח פנייה יומית אחת, ויחד נגיע ליעד ונחזיר את האוטובוסים אלינו!
@@ -578,7 +578,7 @@
         
         <label>1. העתיקו את כתובת הנמען:</label>
         <div class="copy-row">
-            <input type="text" id="copyEmailField" value="pniotcrm@mot.gov.il,lishkatr@bshemesh.co.il,Dvori@Bshemesh.co.il,TB-Han@Bshemesh.co.il,ilfabus@gmail.com,A573155610@gmail.com,shmuelg@Bshemesh.co.il,avim@bshemesh.co.il,michal.l@Bshemesh.co.il,bennyl@bshemesh.co.il" readonly>
+            <input type="text" id="copyEmailField" value="pniotcrm@mot.gov.il,lishkatr@bshemesh.co.il,Dvori@Bshemesh.co.il,ilfabus@gmail.com,A573155610@gmail.com,shmuelg@Bshemesh.co.il,avim@bshemesh.co.il,michal.l@Bshemesh.co.il,doritu@bshemesh.co.il,benneyl@bshemesh.co.il,brachaha@bshemesh.co.il,dudis@bshemesh.co.il,th-han@bshemesh.co.il,chayas@bshemesh.co.il" readonly>
             <button class="copy-btn-small" onclick="copySpecificField('copyEmailField')">העתק נמען</button>
         </div>
         
@@ -624,7 +624,7 @@
     // ==============================================================
     // כאן מעדכנים את מספרי הפניות
     // ==============================================================
-    const CURRENT_SUBMISSIONS = 2202; 
+    const CURRENT_SUBMISSIONS = 2143; 
     const TARGET_SUBMISSIONS = 3000; 
     // ==============================================================
 
@@ -809,8 +809,8 @@
 
         let popupShown = false;
 
-        // רשימת הכתובות של בכירי עיריית בית שמש והמייל של הוועד בעותק נסתר
-        const bccList = "lishkatr@bshemesh.co.il,Dvori@Bshemesh.co.il,TB-Han@Bshemesh.co.il,ilfabus@gmail.com,A573155610@gmail.com,shmuelg@Bshemesh.co.il,avim@bshemesh.co.il,michal.l@Bshemesh.co.il,bennyl@bshemesh.co.il";
+        // רשימת הכתובות של בכירי עיריית בית שמש והמייל של הוועד בעותק נסתר (מעודכן ללא תמר, ועם כל צוות מחלקת תנועה)
+        const bccList = "lishkatr@bshemesh.co.il,Dvori@Bshemesh.co.il,ilfabus@gmail.com,A573155610@gmail.com,shmuelg@Bshemesh.co.il,avim@bshemesh.co.il,michal.l@Bshemesh.co.il,doritu@bshemesh.co.il,benneyl@bshemesh.co.il,brachaha@bshemesh.co.il,dudis@bshemesh.co.il,th-han@bshemesh.co.il,chayas@bshemesh.co.il";
 
         if (action === 'open') {
             gtag('event', 'send_email_clicked', { 'event_category': 'Buttons', 'event_label': 'Green Send Button' });
