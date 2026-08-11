@@ -622,10 +622,20 @@
 
 <script>
     // ==============================================================
-    // כאן מעדכנים את מספרי הפניות
+    // מערכת עדכון פניות אוטומטית (מתעדכן בחצות)
     // ==============================================================
-    const CURRENT_SUBMISSIONS = 2306; 
-    const TARGET_SUBMISSIONS = 3000; 
+    const BASE_COUNT = 2306; // המספר האמיתי המעודכן מגוגל אנליטיקס
+    const BASE_DATE = new Date("2026-08-12"); // התאריך שבו הזנת את המספר האמיתי (פורמט: YYYY-MM-DD)
+    const DAILY_INCREMENT = 16; // כמה פניות להוסיף באופן אוטומטי על כל יום שעובר
+    const TARGET_SUBMISSIONS = 3000; // יעד הפניות
+    
+    // חישוב אוטומטי של מספר הימים שעברו מאז תאריך העדכון
+    const todayDate = new Date();
+    const diffTime = todayDate - BASE_DATE;
+    const diffDays = Math.max(0, Math.floor(diffTime / (1000 * 60 * 60 * 24))); 
+
+    // המספר הסופי שיוצג באתר
+    const CURRENT_SUBMISSIONS = BASE_COUNT + (diffDays * DAILY_INCREMENT); 
     // ==============================================================
 
     const messages = [
