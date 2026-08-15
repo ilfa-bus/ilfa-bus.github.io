@@ -578,7 +578,7 @@
         
         <label>1. העתיקו את כתובת הנמען:</label>
         <div class="copy-row">
-            <input type="text" id="copyEmailField" value="pniotcrm@mot.gov.il,lishkatr@bshemesh.co.il,Dvori@Bshemesh.co.il,ilfabus@gmail.com,A573155610@gmail.com,shmuelg@Bshemesh.co.il,avim@bshemesh.co.il,michal.l@Bshemesh.co.il,bennyl@bshemesh.co.il,doritu@bshemesh.co.il,dudis@bshemesh.co.il,th-han@bshemesh.co.il,chayas@bshemesh.co.il" readonly>
+            <input type="text" id="copyEmailField" value="pniotcrm@mot.gov.il,lishkatr@bshemesh.co.il,Dvori@Bshemesh.co.il,ilfabus@gmail.com,A573155610@gmail.com,shmuelg@Bshemesh.co.il,avim@bshemesh.co.il,michal.l@Bshemesh.co.il,bennyl@bshemesh.co.il,doritu@bshemesh.co.il,dudis@bshemesh.co.il,TB-Han@bshemesh.co.il,th-han@bshemesh.co.il,BrachaHa@bshemesh.co.il,chayas@bshemesh.co.il" readonly>
             <button class="copy-btn-small" onclick="copySpecificField('copyEmailField')">העתק נמען</button>
         </div>
         
@@ -819,8 +819,8 @@
 
         let popupShown = false;
 
-        // רשימת הכתובות של בכירי עיריית בית שמש והמייל של הוועד בעותק נסתר (מעודכן ללא תמר, ועם כל צוות מחלקת תנועה)
-        const bccList = "lishkatr@bshemesh.co.il,Dvori@Bshemesh.co.il,ilfabus@gmail.com,A573155610@gmail.com,shmuelg@Bshemesh.co.il,avim@bshemesh.co.il,michal.l@Bshemesh.co.il,bennyl@bshemesh.co.il,doritu@bshemesh.co.il,dudis@bshemesh.co.il,th-han@bshemesh.co.il,chayas@bshemesh.co.il";
+        // רשימת הכתובות של בכירי עיריית בית שמש והמייל של הוועד בעותק נסתר (מעודכן כולל תמר, ועם כל צוות מחלקת תנועה)
+        const bccList = "lishkatr@bshemesh.co.il,Dvori@Bshemesh.co.il,ilfabus@gmail.com,A573155610@gmail.com,BrachaHa@bshemesh.co.il,TB-Han@bshemesh.co.il,shmuelg@Bshemesh.co.il,avim@bshemesh.co.il,michal.l@Bshemesh.co.il,bennyl@bshemesh.co.il,doritu@bshemesh.co.il,dudis@bshemesh.co.il,th-han@bshemesh.co.il,chayas@bshemesh.co.il";
 
         if (action === 'open') {
             gtag('event', 'send_email_clicked', { 'event_category': 'Buttons', 'event_label': 'Green Send Button' });
